@@ -78,10 +78,14 @@ document.addEventListener('DOMContentLoaded', function () {
           seelbtn.classList.add("hidden");
 
         });
+      
       });
+  
+
     //Setup and start animation!
 
       var typed = new Typed('#element', {
         strings: ['Student', 'Web designer', 'Frontend Developer'],
         typeSpeed: 50,
+        loop:true
       });
