@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
           hiddenboxes.forEach((box) => {
             box.classList.remove("hidden");
           });
-          collegeheading.classList.remove("hidden");
+          personalheading.classList.remove("hidden");
           seemorebtn.classList.add("hidden");
           seelessbtn.classList.remove("hidden");
         });
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
           hiddenboxes.forEach((box) => {
             box.classList.add("hidden");
           });
-          collegeheading.classList.add("hidden");
+          personalheading.classList.add("hidden");
           seemorebtn.classList.remove("hidden");
           seelessbtn.classList.add("hidden");
 
