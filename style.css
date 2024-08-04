@@ -621,4 +621,8 @@ hr{
 .logo i{
     margin-left: 20px;
 }
-
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}

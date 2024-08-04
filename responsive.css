@@ -16,7 +16,6 @@
     margin-right: 0px;
 }
 .img {
-    margin-left: 0px;
     height: 90px;
     width: 90px;
 }
@@ -84,20 +83,32 @@
 @media (max-width: 600px){
 .left{
     font-size: 18px;
-    margin-right: 0;
+    /* margin-left: 1000%; */
+    margin-right: 250px;
+    margin-top: 10px;
 }
 .navbar{
     height: auto;
     flex-direction: column;
+    background-color: #7091e6;
 }
 .navbar ul{
-    height: auto;
+    height: 80vh;
+    display: none;
     flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 150px;
+    background: #141619;
+    transition: left 0.3s ease-in-out;
+    margin-top: 0; 
 }
 .img {
     height: 70px;
     width: 70px;
-    margin-left: 0px;
+    margin-left: -70%;
+    margin-top: -8%;
 }
 .navbar ul li a{
     font-size: 15px;
@@ -184,7 +195,7 @@
     font-size: 20px;
     margin-left: 40px;
 }
-#college-project-heading{
+#personal-project-heading{
     margin-left: 0px;
 }
 .pdiv{
@@ -197,7 +208,7 @@
     margin-top: 0px;
     flex:none
 }
-.pbox1-img, .pbox2-img, .pbox3-img, .pbox4-img, .pbox5-img, .pbox6-img {
+.pbox1-img, .pbox2-img, .pbox3-img, .pbox4-img, .pbox5-img, .pbox6-img, .pbox7-img, .pbox8-img, .pbox9-img{
     width: 100%;
     height: 150px;
 }
@@ -217,7 +228,7 @@
 .project-box {
     height: auto;
 }
-.pbox4 .img-txt, .pbox5 .img-txt, .pbox6 .img-txt{
+.pbox1 .img-txt, .pbox2 .img-txt, .pbox3 .img-txt{
     margin-left: 5%;
     width: 240px;
 }
@@ -268,4 +279,38 @@
 .sign{
     font-size: 10px;
 }
+
+  .navbar ul.show{
+    left: 0;
+  }
+  .navbar ul .show + .hamburger{
+    display: none;
+  }
+  .navbar ul .show + .hamburger + .close{
+    display: block;
+  }
+
+  .navbar ul li {
+    margin: 20px 0;
+  }
+
+  .navbar ul li a {
+    color: #fff;
+    padding: 10px;
+    display: block;
+    text-align: center;
+  }
+
+  .hamburger, .close{
+    display: block;
+  }
+  .close{
+    display: none;
+  }
+    .hamburger i, .close i {
+    font-size: 24px;
+    color: #fff;
+    margin-left: 700%;
+  }
+
 }
