@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
           seelbtn.classList.add("hidden");
 
         });
-      
+   
       });
   
 
@@ -89,3 +89,19 @@ document.addEventListener('DOMContentLoaded', function () {
         typeSpeed: 50,
         loop:true
       });
+document.addEventListener('DOMContentLoaded', function () {
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.querySelector('.navbar ul');
+  const close=document.getElementById('close');
+
+  hamburger.addEventListener('click', function () {
+    navMenu.classList.toggle('show');
+    hamburger.style.display='none';
+    close.style.display='block';
+  });
+  close.addEventListener("click", function(){
+    navMenu.classList.toggle('show');
+    close.style.display='none';
+    hamburger.style.display='block';
+  })
+});
