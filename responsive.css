@@ -84,7 +84,7 @@
 .left{
     font-size: 18px;
     /* margin-left: 1000%; */
-    margin-right: 250px;
+    margin-right: 230px;
     margin-top: 10px;
 }
 .navbar{
@@ -107,7 +107,7 @@
 .img {
     height: 70px;
     width: 70px;
-    margin-left: -70%;
+    margin-left: -60%;
     margin-top: -8%;
 }
 .navbar ul li a{

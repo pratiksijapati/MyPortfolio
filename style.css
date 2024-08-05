@@ -626,3 +626,8 @@ hr{
   font-size: 24px;
   cursor: pointer;
 }
+.close{
+     display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
