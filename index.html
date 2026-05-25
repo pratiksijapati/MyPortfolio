@@ -1,292 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pratik Sijapati</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pratik Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
-      integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
+<nav>
+  <div class="nav-inner">
+    <div class="logo">PS</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+  </div>
+</nav>
 
-  </head>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" class="mnav-link">About</a>
+  <a href="#experience" class="mnav-link">Experience</a>
+  <a href="#skills" class="mnav-link">Skills</a>
+  <a href="#projects" class="mnav-link">Projects</a>
+  <a href="#contact" class="mnav-link">Contact</a>
+</div>
 
-  <body>
-    <div id="home">
-      <header>
-        <div class="navbar" id="navbar">
-         <div class="hamburger" id="hamburger">
-          <i class="fas fa-bars"></i>
-        </div>
-         <div class="close" id="close">
-        <i class="fas fa-times"></i>
-      </div>
-        <div class="img"></div>
-          <div class="left">Pratik's Portfolio</div>
-          <div class="right">
-           
-            <ul>
-     
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#project">Project</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-         
-        </div>
-      </header>
-
-      <main>
-        <div class="firstsection">
-          <div class="leftsection">
-            <div class="text-section">
-              Hello, I am <span class="name">Pratik</span>
-              <div>And I am a passionate</div>
-              <span id="element"></span>
-            </div>
-            <a href="images/resume.pdf" download><button>Download Resume</button></a>
-            <a href="https://github.com/pratiksijapati"><button>Go to GitHub</button></a>
-          </div>
-          <div class="rightsection">
-            <img src="images/bg.JPG" alt="">
-          </div>
-        </div>
-    </main>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="badge">Available for opportunities</div>
+    <h1 class="name">Hi, I'm <span>Pratik Sijapati</span></h1>
+    <div class="typed-line"><span id="typed"></span></div>
+    <p class="hero-sub">Frontend developer & BCA student passionate about building clean, user-focused web experiences — from interactive UIs to AI-powered applications.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      <a href="https://github.com/pratiksijapati" target="_blank" class="btn btn-outline">GitHub</a>
     </div>
+  </div>
+</section>
 
-    <div id="about">
-      <hr>
-      <div class="experience" id="experience">
-        <h2>ABOUT ME</h2>
-        <div class="edu" id="education">EDUCATION</div>
-        <div class="edu-exp">
-          <div class="box1 box">
-            <div class="school-img"></div>
-            <p>Finished SEE from Ganga Jamuna English Secondary School with a great passing marks of GPA A+.</p>
-            <h2>(2017)</h2>
-          </div>
-          <div class="box2 box">
-            <div class="college-img"></div>
-            <p>Finished a successful +2 course choosing a faculty of science in Pinnacle Academy with a marks of GPA A.
-            </p>
-            <h2>(2018-2020)</h2>
-          </div>
-          <div class="box3 box">
-            <div class="bachelor-img"></div>
-            <p>Currently studying BCA in Vedas College Affiliated to Tribhuwan University.</p>
-            <h2>(2021-Present)</h2>
-          </div>
-          <div class="edu hidden" id="skill">SKILLS</div>
-          <div class="box4 box hidden">
-            <div class="frontend-img"></div>
-            <p>HTML, CSS AND JAVASCRIPT.</p>
-            <h2>(FRONTEND SKILLS)</h2>
-          </div>
-          <div class="box4 box hidden">
-            <div class="backend-img"></div>
-            <p>HYPERTEXT PREPROCESSOR(PHP).</p>
-            <h2>(BACKEND SKILLS)</h2>
-          </div>
-          <div class="box4 box hidden">
-            <div class="other-img"></div>
-            <p>Photo and Video Editing, GIt and Github.</p>
-            <h2>(OTHER)</h2>
-          </div>
-        </div>
-        <button id="seem">See More</button>
-        <button id="seel" class="hidden">See Less</button>
-      </div>
-      <hr>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Get to know me</div>
+  <div class="section-title">About Me</div>
+  <div class="section-line"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm Pratik Sijapati, a Frontend Developer and BCA student at Vedas College, Tribhuvan University. I love turning ideas into functional, beautiful digital products.</p>
+      <p>With ~2 years of industry experience at Karkhana, I've worked as both a Web Application Creator and UI/UX Designer — giving me a well-rounded perspective on building products people enjoy using.</p>
+      <p>Beyond code, I'm exploring AI/ML with Python and enjoy digital design, photo & video editing, and all things creative tech.</p>
+      <p class="location"><strong>Location:</strong> <span>Lele, Lalitpur, Nepal</span></p>
     </div>
-    <div id="project">
-      <div class="project-box" id="project-box">
-        <h2>PROJECTS</h2>
-        <div class="project-heading" id="college-project-heading">College Project</div>
-        <div class="pdiv">
-    <div class="pbox1 pbox">
-            <div class="pbox1-img">
-            <div class="img-txt">Human Resource Management System Using PHP.</div>
-            </div>
-            <div class="hrquest">
-              <a href="https://github.com/uttamshr10/HRQuest">Visit Site</a>
-            </div>
-          </div>
-          <div class="pbox2 pbox">
-            <div class="pbox2-img">
-            <div class="img-txt">Restaurant Management System using C.</div>
-            </div>
-            <div class="hrquest">
-              <a href="https://github.com/uttamshr10/restaurant-management-system">Visit Site</a>
-            </div>
-          </div>
-          <div class="pbox3 pbox">
-            <div class="pbox3-img">
-            <div class="img-txt">Inventory Management System using Java.</div>
-            </div>
-            <div class="hrquest">
-              <a href="https://github.com/pratiksijapati/Inventory-Management-System">Visit Site</a>
-            </div>
-          </div>
-
-
-<!-- 
-          @REM <div class="pbox1 pbox">
-          @REM   <div class="pbox1-img">
-          @REM     <div class="img-txt">Calulator using JavaScript.</div>
-          @REM   </div>
-          @REM   <div class="hrquest">
-          @REM     <a href="https://github.com/pratiksijapati/calculator">Visit Site</a>
-          @REM   </div>
-          @REM </div>
-          @REM <div class="pbox2 pbox">
-          @REM   <div class="pbox2-img">
-          @REM     <div class="img-txt">Coffee shop using Html and Css.</div>
-          @REM   </div>
-          @REM   <div class="hrquest">
-          @REM     <a href="https://github.com/pratiksijapati/coffee-shop">Visit Site</a>
-          @REM   </div>
-          @REM </div>
-          @REM <div class="pbox3 pbox">
-          @REM   <div class="img-txt">Tic Tac Toe using JavaScript.</div>
-          @REM   <div class="pbox3-img"></div>
-          @REM   <div class="hrquest">
-          @REM     <a href="https://github.com/pratiksijapati/tic-tac-toe">Visit Site</a>
-          @REM   </div>
-          @REM </div> -->
-          
-
-
-          <div class="project-heading hidden" id="personal-project-heading">Personal Project</div>
-        <div class="pbox4 pbox hidden">
-            <div class="pbox4-img">
-              <div class="img-txt">Calulator using JavaScript.</div>
-            </div>
-            <div class="hrquest">
-              <a href="https://github.com/pratiksijapati/calculator">Visit Site</a>
-            </div>
-          </div>
-          <div class="pbox5 pbox hidden">
-            <div class="pbox5-img">
-              <div class="img-txt">Coffee shop using Html and Css.</div>
-            </div>
-            <div class="hrquest">
-              <a href="https://github.com/pratiksijapati/coffee-shop">Visit Site</a>
-            </div>
-          </div>
-          <div class="pbox6 pbox hidden">
-            <div class="pbox6-img">
-            <div class="img-txt">Tic Tac Toe using JavaScript.</div>
-            </div>
-            <div class="hrquest">
-              <a href="https://github.com/pratiksijapati/tic-tac-toe">Visit Site</a>
-            </div>
-          </div>
-
-    <div class="pbox7 pbox hidden">
-            <div class="pbox7-img">
-              <div class="img-txt">Instagram Clone using Html and Css.</div>
-            </div>
-            <div class="hrquest">
-              <a href="https://github.com/pratiksijapati/Instagram-Clone.git">Visit Site</a>
-            </div>
-          </div>
-          <div class="pbox8 pbox hidden">
-            <div class="pbox8-img">
-              <div class="img-txt">Amazon Clone Html and Css.</div>
-            </div>
-            <div class="hrquest">
-              <a href="https://github.com/pratiksijapati/Amazon-Clone.git">Visit Site</a>
-            </div>
-          </div>
-          <div class="pbox9 pbox hidden">
-            <div class="pbox9-img">
-            <div class="img-txt">Zomato Clone using Html and Css.</div>
-            </div>
-            <div class="hrquest">
-              <a href="https://github.com/pratiksijapati/Zomato-Clone.git">Visit Site</a>
-            </div>
-          </div>
-
-          <!-- @REM <div class="pbox4 pbox hidden">
-          @REM   <div class="img-txt">Human Resource Management System Using PHP.</div>
-          @REM   <div class="pbox4-img"></div>
-          @REM   <div class="hrquest">
-          @REM     <a href="https://github.com/uttamshr10/HRQuest">Visit Site</a>
-          @REM   </div>
-          @REM </div>
-          @REM <div class="pbox5 pbox hidden">
-          @REM   <div class="img-txt">Restaurant Management System using C.</div>
-          @REM   <div class="pbox6-img"></div>
-          @REM   <div class="hrquest">
-          @REM     <a href="https://github.com/uttamshr10/restaurant-management-system">Visit Site</a>
-          @REM   </div>
-          @REM </div>
-          @REM <div class="pbox6 pbox hidden">
-          @REM   <div class="img-txt">Inventory Management System using Java.</div>
-          @REM   <div class="pbox5-img"></div>
-          @REM   <div class="hrquest">
-          @REM     <a href="https://github.com/pratiksijapati/Inventory-Management-System">Visit Site</a>
-          @REM   </div>
-          @REM </div> -->
-        </div>
-        <button id="seemore">See More</button>
-        <button id="seeless" class="hidden">See Less</button>
+    <div>
+      <div class="edu-heading">Education</div>
+      <div class="edu-item">
+        <div class="edu-year">2021 – Present</div>
+        <div class="edu-title">Bachelor of Computer Applications (BCA)</div>
+        <div class="edu-sub">Vedas College, Tribhuvan University</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2018 – 2020</div>
+        <div class="edu-title">+2 Science</div>
+        <div class="edu-sub">Pinnacle Academy — GPA A</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2017</div>
+        <div class="edu-title">SEE</div>
+        <div class="edu-sub">Ganga Jamuna English Secondary School — GPA A+</div>
       </div>
     </div>
-    <hr>
-    <div id="contact">
-      <div class="contact-me">
-        <h2>CONTACT</h2>
-        <div class="contact-form">
-          <h2>Get In Touch</h2>
-          <form action="https://api.web3forms.com/submit" method="POST">
-            <div class="message">
-              <input type="hidden" name="access_key" value="14b194eb-bbe6-45d6-9849-cd00ad35dbf1">
-              <input type="text" name="name" id="name" placeholder="Your Name">
-              <input type="email" name="email" id="email" placeholder="Your Email">
-              <textarea class="area" placeholder="Your Message"></textarea>
-              <button class="submit">Submit</button>
-            </div>
-          </form>
-        </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Where I've worked</div>
+  <div class="section-title">Experience</div>
+  <div class="section-line"></div>
+  <div class="timeline">
+    <div class="exp-card">
+      <div class="exp-role">Web Application Creator & UI/UX Designer</div>
+      <div class="exp-company">Karkhana</div>
+      <div class="exp-date">2022 – 2024 · ~2 years · Full-time</div>
+      <div class="exp-desc">Wore two hats at Karkhana — building and maintaining web applications while also owning the design side. Developed interactive digital experiences with clean frontend architecture, and designed intuitive interfaces from wireframes through to final delivery. Collaborated with cross-functional teams to ship user-centric products with a strong, consistent visual identity.</div>
+      <div class="exp-tags">
+        <span class="tag">Web Development</span>
+        <span class="tag">UI/UX Design</span>
+        <span class="tag">Digital Experience</span>
+        <span class="tag">Frontend</span>
+        <span class="tag">Wireframing</span>
       </div>
     </div>
-    <hr>
-    <div id="f">
-      <div class="footer">
-        <div class="foot1 foot">Pratik's Portfolio</div>
-        <div class="foot2 foot">
-          <h2>Member</h2>
-          <p>Pratik Sijapati</p>
-        </div>
-        <div class="foot3 foot">
-          <h2>Location</h2>
-          <p>Lele, Lalitpur</p>
-          <p>+977-9844479357</p>
-        </div>
-      </div>
-      <hr>
-    </div>
-    <div class="copyright">
-      <div class="sign">
-        All trademarks are properties of pratikportfolio.com 2024 © Sijapati Company Ltd. All rights reserved.
-      </div>
-      <div class="logo">
-        <a href="https://www.facebook.com/pratiksijapatii"><i class="fa-brands fa-square-facebook"></i></a>
-        <a href="https://www.instagram.com/pratikczapati"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/pratik-sijapati-a40647252"><i class="fa-brands fa-linkedin"></i></a>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">What I work with</div>
+  <div class="section-title">Skills</div>
+  <div class="section-line"></div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-cat">Frontend</div>
+      <div class="skill-tags">
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">React</span>
       </div>
     </div>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script src="app.js">
-    </script>
-  </body>
+    <div class="skill-card">
+      <div class="skill-cat">Backend</div>
+      <div class="skill-tags">
+        <span class="tag">PHP</span>
+        <span class="tag">Python</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">AI / ML</div>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">AI Basics</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Design & Marketing</div>
+      <div class="skill-tags">
+        <span class="tag">UI/UX</span>
+        <span class="tag">Photo Editing</span>
+        <span class="tag">Video Editing</span>
+        <span class="tag">Digital Marketing</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Tools</div>
+      <div class="skill-tags">
+        <span class="tag">Git</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">Figma</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Things I've built</div>
+  <div class="section-title">Projects</div>
+  <div class="section-line"></div>
+  <div class="projects-grid">
+    <div class="proj-card">
+      <div class="proj-type">College Project</div>
+      <div class="proj-title">Inventory Management System</div>
+      <div class="proj-desc">A robust web-based IMS for streamlining warehouse operations and stock management, built with HTML, CSS, and Java.</div>
+      <div class="proj-footer">
+        <div class="skill-tags"><span class="tag">Java</span><span class="tag">HTML</span><span class="tag">CSS</span></div>
+        <a href="https://github.com/pratiksijapati/Inventory-Management-System" target="_blank" class="proj-link">View →</a>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-type">College Project</div>
+      <div class="proj-title">HR Management System</div>
+      <div class="proj-desc">A full-featured human resource management system with employee tracking and reporting, built using PHP.</div>
+      <div class="proj-footer">
+        <div class="skill-tags"><span class="tag">PHP</span><span class="tag">MySQL</span></div>
+        <a href="https://github.com/uttamshr10/HRQuest" target="_blank" class="proj-link">View →</a>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-type">Personal Project</div>
+      <div class="proj-title">Tic-Tac-Toe Game</div>
+      <div class="proj-desc">An interactive two-player browser game built with vanilla JavaScript, featuring clean UI and game logic.</div>
+      <div class="proj-footer">
+        <div class="skill-tags"><span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span></div>
+        <a href="https://github.com/pratiksijapati/tic-tac-toe" target="_blank" class="proj-link">View →</a>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-type">Personal Project</div>
+      <div class="proj-title">Amazon Clone</div>
+      <div class="proj-desc">A pixel-perfect responsive clone of Amazon's UI showcasing advanced CSS layout and design skills.</div>
+      <div class="proj-footer">
+        <div class="skill-tags"><span class="tag">HTML</span><span class="tag">CSS</span></div>
+        <a href="https://github.com/pratiksijapati/Amazon-Clone" target="_blank" class="proj-link">View →</a>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-type">Personal Project</div>
+      <div class="proj-title">Coffee Shop Website</div>
+      <div class="proj-desc">A visually rich coffee shop landing page with a warm aesthetic, built entirely in HTML and CSS.</div>
+      <div class="proj-footer">
+        <div class="skill-tags"><span class="tag">HTML</span><span class="tag">CSS</span></div>
+        <a href="https://github.com/pratiksijapati/coffee-shop" target="_blank" class="proj-link">View →</a>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-type">Personal Project</div>
+      <div class="proj-title">Zomato Clone</div>
+      <div class="proj-desc">A sleek replica of Zomato's platform demonstrating responsive design and modern UI layout techniques.</div>
+      <div class="proj-footer">
+        <div class="skill-tags"><span class="tag">HTML</span><span class="tag">CSS</span></div>
+        <a href="https://github.com/pratiksijapati/Zomato-Clone" target="_blank" class="proj-link">View →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's connect</div>
+  <div class="section-title">Contact</div>
+  <div class="section-line"></div>
+  <div class="contact-wrap">
+    <div>
+      <div class="contact-info">
+        <p>Whether you have a project in mind, want to collaborate, or just want to say hi — I'd love to hear from you!</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:pratiksijapati@gmail.com" class="c-link"><span>Email</span> pratiksijapati@gmail.com</a>
+        <a href="tel:+9779844479357" class="c-link"><span>Phone</span> +977-9844479357</a>
+        <a href="https://linkedin.com/in/pratiksijapati" target="_blank" class="c-link"><span>LinkedIn</span> in/pratiksijapati</a>
+        <a href="https://github.com/pratiksijapati" target="_blank" class="c-link"><span>GitHub</span> pratiksijapati</a>
+        <a href="https://www.facebook.com/pratiksijapatii" target="_blank" class="c-link"><span>Facebook</span> pratiksijapatii</a>
+        <a href="https://www.instagram.com/pratikczapati" target="_blank" class="c-link"><span>Instagram</span> pratikczapati</a>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="John Doe"/>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="john@example.com"/>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell me about your project..."></textarea>
+      </div>
+      <button class="btn btn-primary" style="width:100%;">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed & built by Pratik Sijapati · Lele, Lalitpur, Nepal · © 2024</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
 </html>
