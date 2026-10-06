@@ -43,6 +43,7 @@
 .handle {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
   gap: 0.25rem;
   color: var(--text-muted);
   font-family: var(--font-mono);
