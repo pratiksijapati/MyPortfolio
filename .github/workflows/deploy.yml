@@ -1,0 +1,51 @@
+# Builds the site and publishes it to GitHub Pages on every push to main.
+# One-time setup: repo Settings → Pages → Source: "GitHub Actions".
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  # Rebuild weekly so the GitHub project snapshot stays fresh even without code changes.
+  schedule:
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          # Used only on the build machine to avoid GitHub API rate limits; never bundled.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Optional: a form endpoint such as https://formspree.io/f/xxxxxxx
+          # (Settings → Secrets and variables → Actions → Variables).
+          VITE_CONTACT_ENDPOINT: ${{ vars.VITE_CONTACT_ENDPOINT }}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

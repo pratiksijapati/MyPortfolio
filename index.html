@@ -1,260 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Pratik Sijapati</title>
-<link rel="stylesheet" href="./style.css">
-<script src="./app.js" defer></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pratik Sijapati | Full-Stack Developer</title>
+    <meta
+      name="description"
+      content="Pratik Sijapati is a Full-Stack Developer from Lalitpur, Nepal, building complete web products with React, TypeScript, Django, FastAPI, PostgreSQL and AI/ML."
+    />
+    <meta name="author" content="Pratik Sijapati" />
+    <meta name="theme-color" content="#08090c" />
+    <link rel="canonical" href="https://www.pratiksijapati.com.np/" />
 
-<nav>
-  <div class="nav-inner">
-    <div class="logo">PS</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
-  </div>
-</nav>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-<div class="mobile-nav" id="mobileNav">
-  <a href="#about" class="mnav-link">About</a>
-  <a href="#experience" class="mnav-link">Experience</a>
-  <a href="#skills" class="mnav-link">Skills</a>
-  <a href="#projects" class="mnav-link">Projects</a>
-  <a href="#contact" class="mnav-link">Contact</a>
-</div>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.pratiksijapati.com.np/" />
+    <meta property="og:site_name" content="Pratik Sijapati" />
+    <meta property="og:title" content="Pratik Sijapati | Full-Stack Developer" />
+    <meta
+      property="og:description"
+      content="I build complete digital products — from polished interfaces to APIs, databases, backend systems and AI-powered applications."
+    />
+    <meta property="og:image" content="https://www.pratiksijapati.com.np/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pratik Sijapati — Full-Stack Developer" />
+    <meta property="og:locale" content="en_US" />
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-content">
-    <div class="badge">Available for opportunities</div>
-    <h1 class="name">Hi, I'm <span>Pratik Sijapati</span></h1>
-    <div class="typed-line"><span id="typed"></span></div>
-    <p class="hero-sub">Frontend developer & BCA student passionate about building clean, user-focused web experiences — from interactive UIs to AI-powered applications.</p>
-    <div class="hero-btns">
-      <a href="#projects" class="btn btn-primary">View My Work</a>
-      <a href="#contact" class="btn btn-outline">Get In Touch</a>
-      <a href="https://github.com/pratiksijapati" target="_blank" class="btn btn-outline">GitHub</a>
-    </div>
-  </div>
-</section>
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pratik Sijapati | Full-Stack Developer" />
+    <meta
+      name="twitter:description"
+      content="Full-stack web products with React, TypeScript, Django, FastAPI, PostgreSQL and AI/ML."
+    />
+    <meta name="twitter:image" content="https://www.pratiksijapati.com.np/og-image.png" />
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-label">Get to know me</div>
-  <div class="section-title">About Me</div>
-  <div class="section-line"></div>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>I'm Pratik Sijapati, a Frontend Developer and BCA student at Vedas College, Tribhuvan University. I love turning ideas into functional, beautiful digital products.</p>
-      <p>With ~2 years of industry experience at Karkhana, I've worked as both a Web Application Creator and UI/UX Designer — giving me a well-rounded perspective on building products people enjoy using.</p>
-      <p>Beyond code, I'm exploring AI/ML with Python and enjoy digital design, photo & video editing, and all things creative tech.</p>
-      <p class="location"><strong>Location:</strong> <span>Lele, Lalitpur, Nepal</span></p>
-    </div>
-    <div>
-      <div class="edu-heading">Education</div>
-      <div class="edu-item">
-        <div class="edu-year">2021 – Present</div>
-        <div class="edu-title">Bachelor of Computer Applications (BCA)</div>
-        <div class="edu-sub">Vedas College, Tribhuvan University</div>
-      </div>
-      <div class="edu-item">
-        <div class="edu-year">2018 – 2020</div>
-        <div class="edu-title">+2 Science</div>
-        <div class="edu-sub">Pinnacle Academy — GPA A</div>
-      </div>
-      <div class="edu-item">
-        <div class="edu-year">2017</div>
-        <div class="edu-title">SEE</div>
-        <div class="edu-sub">Ganga Jamuna English Secondary School — GPA A+</div>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Pratik Sijapati",
+        "url": "https://www.pratiksijapati.com.np/",
+        "jobTitle": "Full-Stack Developer",
+        "address": { "@type": "PostalAddress", "addressLocality": "Lalitpur", "addressCountry": "NP" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Vedas College, Tribhuvan University" },
+        "knowsAbout": ["React", "TypeScript", "Django", "FastAPI", "PostgreSQL", "MySQL", "PHP", "REST APIs", "Machine Learning"],
+        "sameAs": ["https://github.com/pratiksijapati", "https://www.linkedin.com/in/pratiksijapati"]
+      }
+    </script>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-label">Where I've worked</div>
-  <div class="section-title">Experience</div>
-  <div class="section-line"></div>
-  <div class="timeline">
-    <div class="exp-card">
-      <div class="exp-role">Web Application Creator & UI/UX Designer</div>
-      <div class="exp-company">Karkhana</div>
-      <div class="exp-date">2022 – 2024 · ~2 years · Full-time</div>
-      <div class="exp-desc">Wore two hats at Karkhana — building and maintaining web applications while also owning the design side. Developed interactive digital experiences with clean frontend architecture, and designed intuitive interfaces from wireframes through to final delivery. Collaborated with cross-functional teams to ship user-centric products with a strong, consistent visual identity.</div>
-      <div class="exp-tags">
-        <span class="tag">Web Development</span>
-        <span class="tag">UI/UX Design</span>
-        <span class="tag">Digital Experience</span>
-        <span class="tag">Frontend</span>
-        <span class="tag">Wireframing</span>
-      </div>
-    </div>
-  </div>
-</section>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400;500&display=swap"
+    />
+    <link rel="preconnect" href="https://api.github.com" crossorigin />
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-label">What I work with</div>
-  <div class="section-title">Skills</div>
-  <div class="section-line"></div>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-cat">Frontend</div>
-      <div class="skill-tags">
-        <span class="tag">HTML</span>
-        <span class="tag">CSS</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">React</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-cat">Backend</div>
-      <div class="skill-tags">
-        <span class="tag">PHP</span>
-        <span class="tag">Python</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-cat">AI / ML</div>
-      <div class="skill-tags">
-        <span class="tag">Python</span>
-        <span class="tag">Machine Learning</span>
-        <span class="tag">AI Basics</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-cat">Design & Marketing</div>
-      <div class="skill-tags">
-        <span class="tag">UI/UX</span>
-        <span class="tag">Photo Editing</span>
-        <span class="tag">Video Editing</span>
-        <span class="tag">Digital Marketing</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-cat">Tools</div>
-      <div class="skill-tags">
-        <span class="tag">Git</span>
-        <span class="tag">GitHub</span>
-        <span class="tag">Figma</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-label">Things I've built</div>
-  <div class="section-title">Projects</div>
-  <div class="section-line"></div>
-  <div class="projects-grid">
-    <div class="proj-card">
-      <div class="proj-type">College Project</div>
-      <div class="proj-title">Inventory Management System</div>
-      <div class="proj-desc">A robust web-based IMS for streamlining warehouse operations and stock management, built with HTML, CSS, and Java.</div>
-      <div class="proj-footer">
-        <div class="skill-tags"><span class="tag">Java</span><span class="tag">HTML</span><span class="tag">CSS</span></div>
-        <a href="https://github.com/pratiksijapati/Inventory-Management-System" target="_blank" class="proj-link">View →</a>
-      </div>
-    </div>
-    <div class="proj-card">
-      <div class="proj-type">College Project</div>
-      <div class="proj-title">HR Management System</div>
-      <div class="proj-desc">A full-featured human resource management system with employee tracking and reporting, built using PHP.</div>
-      <div class="proj-footer">
-        <div class="skill-tags"><span class="tag">PHP</span><span class="tag">MySQL</span></div>
-        <a href="https://github.com/uttamshr10/HRQuest" target="_blank" class="proj-link">View →</a>
-      </div>
-    </div>
-    <div class="proj-card">
-      <div class="proj-type">Personal Project</div>
-      <div class="proj-title">Tic-Tac-Toe Game</div>
-      <div class="proj-desc">An interactive two-player browser game built with vanilla JavaScript, featuring clean UI and game logic.</div>
-      <div class="proj-footer">
-        <div class="skill-tags"><span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span></div>
-        <a href="https://github.com/pratiksijapati/tic-tac-toe" target="_blank" class="proj-link">View →</a>
-      </div>
-    </div>
-    <div class="proj-card">
-      <div class="proj-type">Personal Project</div>
-      <div class="proj-title">Amazon Clone</div>
-      <div class="proj-desc">A pixel-perfect responsive clone of Amazon's UI showcasing advanced CSS layout and design skills.</div>
-      <div class="proj-footer">
-        <div class="skill-tags"><span class="tag">HTML</span><span class="tag">CSS</span></div>
-        <a href="https://github.com/pratiksijapati/Amazon-Clone" target="_blank" class="proj-link">View →</a>
-      </div>
-    </div>
-    <div class="proj-card">
-      <div class="proj-type">Personal Project</div>
-      <div class="proj-title">Coffee Shop Website</div>
-      <div class="proj-desc">A visually rich coffee shop landing page with a warm aesthetic, built entirely in HTML and CSS.</div>
-      <div class="proj-footer">
-        <div class="skill-tags"><span class="tag">HTML</span><span class="tag">CSS</span></div>
-        <a href="https://github.com/pratiksijapati/coffee-shop" target="_blank" class="proj-link">View →</a>
-      </div>
-    </div>
-    <div class="proj-card">
-      <div class="proj-type">Personal Project</div>
-      <div class="proj-title">Zomato Clone</div>
-      <div class="proj-desc">A sleek replica of Zomato's platform demonstrating responsive design and modern UI layout techniques.</div>
-      <div class="proj-footer">
-        <div class="skill-tags"><span class="tag">HTML</span><span class="tag">CSS</span></div>
-        <a href="https://github.com/pratiksijapati/Zomato-Clone" target="_blank" class="proj-link">View →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-label">Let's connect</div>
-  <div class="section-title">Contact</div>
-  <div class="section-line"></div>
-  <div class="contact-wrap">
-    <div>
-      <div class="contact-info">
-        <p>Whether you have a project in mind, want to collaborate, or just want to say hi — I'd love to hear from you!</p>
-      </div>
-      <div class="contact-links">
-        <a href="mailto:pratiksijapati@gmail.com" class="c-link"><span>Email</span> pratiksijapati@gmail.com</a>
-        <a href="tel:+9779844479357" class="c-link"><span>Phone</span> +977-9844479357</a>
-        <a href="https://linkedin.com/in/pratiksijapati" target="_blank" class="c-link"><span>LinkedIn</span> in/pratiksijapati</a>
-        <a href="https://github.com/pratiksijapati" target="_blank" class="c-link"><span>GitHub</span> pratiksijapati</a>
-        <a href="https://www.facebook.com/pratiksijapatii" target="_blank" class="c-link"><span>Facebook</span> pratiksijapatii</a>
-        <a href="https://www.instagram.com/pratikczapati" target="_blank" class="c-link"><span>Instagram</span> pratikczapati</a>
-      </div>
-    </div>
-    <div class="contact-form">
-      <div class="form-group">
-        <label>Your Name</label>
-        <input type="text" placeholder="John Doe"/>
-      </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" placeholder="john@example.com"/>
-      </div>
-      <div class="form-group">
-        <label>Message</label>
-        <textarea placeholder="Tell me about your project..."></textarea>
-      </div>
-      <button class="btn btn-primary" style="width:100%;">Send Message</button>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>Designed & built by Pratik Sijapati · Lele, Lalitpur, Nepal · © 2024</p>
-</footer>
-
-
-</body>
+    <!-- Lets CSS hide content for scroll-reveal only when JS is running. -->
+    <script>document.documentElement.classList.add("js");</script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <p style="padding: 2rem; font-family: system-ui; color: #ededf2">
+        Pratik Sijapati — Full-Stack Developer. This site needs JavaScript; you can find my work at
+        <a href="https://github.com/pratiksijapati" style="color: #8b7cf8">github.com/pratiksijapati</a>
+        or email <a href="mailto:pratiksijapati576@gmail.com" style="color: #8b7cf8">pratiksijapati576@gmail.com</a>.
+      </p>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

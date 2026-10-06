@@ -1,0 +1,135 @@
+.frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background: #0c0d12;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  opacity: 0.92;
+  transition:
+    transform 0.6s var(--ease-out),
+    opacity 0.3s;
+}
+
+.placeholder {
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background:
+    radial-gradient(70% 90% at 80% 0%, rgba(139, 124, 248, 0.2), transparent 60%),
+    radial-gradient(60% 80% at 0% 100%, rgba(61, 219, 195, 0.1), transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px) 0 0 / 22px 22px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px) 0 0 / 22px 22px,
+    #0c0d12;
+}
+
+.ai {
+  background:
+    radial-gradient(60% 80% at 50% 50%, rgba(61, 219, 195, 0.16), transparent 65%),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px) 0 0 / 22px 22px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px) 0 0 / 22px 22px,
+    #0c0d12;
+}
+
+/* full-stack: stacked architecture layers */
+.layers {
+  display: grid;
+  gap: 0.45rem;
+  width: min(100%, 320px);
+}
+
+.layer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: rgba(14, 16, 22, 0.85);
+  backdrop-filter: blur(4px);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.layerLabel {
+  color: var(--accent-2);
+  letter-spacing: 0.08em;
+}
+
+.layerValue {
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* AI: data → model → insight */
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.flow span {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: rgba(14, 16, 22, 0.85);
+}
+
+.flow .flowMain {
+  color: var(--text);
+  border-color: var(--accent-2);
+  box-shadow: 0 0 24px -6px var(--accent-2);
+}
+
+.flow i {
+  width: 18px;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+/* frontend / other: browser window */
+.browser {
+  width: min(100%, 260px);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: rgba(14, 16, 22, 0.85);
+  overflow: hidden;
+}
+
+.browserBar {
+  display: flex;
+  gap: 5px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.browserBar b {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.browserBody {
+  display: grid;
+  place-items: center;
+  height: 84px;
+}
+
+.lang {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}

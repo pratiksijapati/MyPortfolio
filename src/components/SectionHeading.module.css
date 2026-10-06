@@ -1,0 +1,42 @@
+.heading {
+  max-width: 46rem;
+  margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.index {
+  color: var(--accent-2);
+}
+
+.rule {
+  width: 28px;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+.title {
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.lead {
+  margin-top: 1rem;
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+  line-height: 1.7;
+  text-wrap: pretty;
+}

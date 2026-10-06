@@ -1,0 +1,257 @@
+{
+  "fetchedAt": "2026-10-06T09:39:27.568Z",
+  "user": {
+    "login": "pratiksijapati",
+    "publicRepos": 17,
+    "url": "https://github.com/pratiksijapati"
+  },
+  "repos": [
+    {
+      "name": "pratiksijapati",
+      "description": "Profile README",
+      "url": "https://github.com/pratiksijapati/pratiksijapati",
+      "homepage": null,
+      "language": null,
+      "topics": [],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2026-10-06T09:34:58Z"
+    },
+    {
+      "name": "salary-prediction-linear-regression",
+      "description": "A simple supervised learning project using Linear Regression to predict salary based on years of experience. Includes training script, performance metrics, and an interactive Streamlit app.",
+      "url": "https://github.com/pratiksijapati/salary-prediction-linear-regression",
+      "homepage": null,
+      "language": "Python",
+      "topics": [
+        "linear-regression",
+        "machine-learning",
+        "python",
+        "scikit-learn",
+        "streamlit"
+      ],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2026-10-06T09:34:32Z"
+    },
+    {
+      "name": "customer-segmentation-kmeans",
+      "description": "An unsupervised learning project that uses K-Means clustering to segment customers based on their annual income and spending score. Includes training script, synthetic data generation, and a Streamlit visualization dashboard.",
+      "url": "https://github.com/pratiksijapati/customer-segmentation-kmeans",
+      "homepage": null,
+      "language": "Python",
+      "topics": [
+        "clustering",
+        "kmeans",
+        "machine-learning",
+        "python",
+        "scikit-learn",
+        "streamlit"
+      ],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2026-10-06T09:34:29Z"
+    },
+    {
+      "name": "Inventory-Management-System",
+      "description": "PHP and MySQL inventory system with login, products, sales, returns, stock tracking and reports.",
+      "url": "https://github.com/pratiksijapati/Inventory-Management-System",
+      "homepage": null,
+      "language": "PHP",
+      "topics": [
+        "crud",
+        "inventory-management",
+        "mysql",
+        "php"
+      ],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2026-10-06T09:34:26Z"
+    },
+    {
+      "name": "ai-career-recommendation-system",
+      "description": "AI career recommendation platform (Domain → Role → Specialization → Skill Gap → Roadmap) built with FastAPI, scikit-learn and React.",
+      "url": "https://github.com/pratiksijapati/ai-career-recommendation-system",
+      "homepage": null,
+      "language": "Python",
+      "topics": [
+        "fastapi",
+        "machine-learning",
+        "python",
+        "random-forest",
+        "react",
+        "recommendation-system",
+        "rest-api",
+        "scikit-learn",
+        "vite"
+      ],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2026-10-06T09:34:23Z"
+    },
+    {
+      "name": "discipline-os",
+      "description": "Full-stack productivity PWA: schedules, tasks, habits, workouts and goals scored daily. React + TypeScript, Django REST Framework, PostgreSQL.",
+      "url": "https://github.com/pratiksijapati/discipline-os",
+      "homepage": "https://discipline-os-omega.vercel.app",
+      "language": "TypeScript",
+      "topics": [
+        "django",
+        "django-rest-framework",
+        "full-stack",
+        "jwt",
+        "postgresql",
+        "pwa",
+        "react",
+        "typescript",
+        "vite",
+        "web-push"
+      ],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2026-10-06T03:11:45Z"
+    },
+    {
+      "name": "Career-Recommendation-System",
+      "description": "Earlier prototype of Career Navigator. See ai-career-recommendation-system for the current version.",
+      "url": "https://github.com/pratiksijapati/Career-Recommendation-System",
+      "homepage": null,
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 0,
+      "fork": false,
+      "archived": true,
+      "updatedAt": "2026-08-19T14:46:10Z"
+    },
+    {
+      "name": "MyPortfolio",
+      "description": "Source of my personal portfolio website.",
+      "url": "https://github.com/pratiksijapati/MyPortfolio",
+      "homepage": "https://www.pratiksijapati.com.np/",
+      "language": "HTML",
+      "topics": [
+        "css",
+        "html",
+        "portfolio"
+      ],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2026-05-25T11:02:09Z"
+    },
+    {
+      "name": "to-do-list",
+      "description": null,
+      "url": "https://github.com/pratiksijapati/to-do-list",
+      "homepage": null,
+      "language": "CSS",
+      "topics": [],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2025-03-04T03:22:19Z"
+    },
+    {
+      "name": "Quiz",
+      "description": null,
+      "url": "https://github.com/pratiksijapati/Quiz",
+      "homepage": null,
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2025-03-04T03:13:53Z"
+    },
+    {
+      "name": "Gym-UI",
+      "description": null,
+      "url": "https://github.com/pratiksijapati/Gym-UI",
+      "homepage": null,
+      "language": "CSS",
+      "topics": [],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2025-03-04T03:04:59Z"
+    },
+    {
+      "name": "calculator",
+      "description": "The Simple Online Calculator is a web-based application that allows users to perform basic arithmetic operations quickly and efficiently. The website is built using HTML for structure, CSS for styling, and JavaScript for functionality, offering a sleek and responsive user experience.",
+      "url": "https://github.com/pratiksijapati/calculator",
+      "homepage": null,
+      "language": "CSS",
+      "topics": [],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2024-08-08T12:34:52Z"
+    },
+    {
+      "name": "Zomato-Clone",
+      "description": "The Zomato Clone is a sleek and modern web-based application designed to replicate the look and feel of the popular Zomato platform. Built using HTML and CSS, this project demonstrates a fully responsive and visually appealing interface for discovering restaurants, browsing menus, and exploring food delivery options.",
+      "url": "https://github.com/pratiksijapati/Zomato-Clone",
+      "homepage": null,
+      "language": "CSS",
+      "topics": [],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2024-08-07T15:44:40Z"
+    },
+    {
+      "name": "Amazon-Clone",
+      "description": "The Amazon Clone is a web-based application that replicates the design and user interface of the popular Amazon shopping platform. Developed using HTML and CSS, this project showcases a fully responsive and visually appealing interface for browsing products, and making purchases.",
+      "url": "https://github.com/pratiksijapati/Amazon-Clone",
+      "homepage": null,
+      "language": "CSS",
+      "topics": [],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2024-08-07T15:20:36Z"
+    },
+    {
+      "name": "Instagram-Clone",
+      "description": "The Instagram Clone is a web-based application designed to replicate the visual appeal and user interface of the popular Instagram platform. Developed using HTML and CSS, this project showcases a sleek, responsive design that mimics Instagram’s core features, providing an immersive experience for browsing photos and connecting with others.",
+      "url": "https://github.com/pratiksijapati/Instagram-Clone",
+      "homepage": null,
+      "language": "CSS",
+      "topics": [],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2024-07-29T11:50:19Z"
+    },
+    {
+      "name": "coffee-shop",
+      "description": "Welcome to Coffee shop, your go-to online destination for discovering our cozy atmosphere, delicious coffee, and handcrafted treats. This website, built using HTML and CSS, offers a visually rich and user-friendly experience, perfectly reflecting the warmth and charm of our physical coffee shop.",
+      "url": "https://github.com/pratiksijapati/coffee-shop",
+      "homepage": null,
+      "language": "CSS",
+      "topics": [],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2024-07-27T08:12:17Z"
+    },
+    {
+      "name": "tic-tac-toe",
+      "description": "The Tic-Tac-Toe Game is a web-based version of the classic two-player game, brought to life using HTML, CSS, and JavaScript. This simple yet engaging application allows players to enjoy the timeless game of Tic-Tac-Toe directly in their web browser, with a clean design and responsive gameplay.",
+      "url": "https://github.com/pratiksijapati/tic-tac-toe",
+      "homepage": null,
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2024-07-27T06:01:53Z"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+.footer {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, transparent, rgba(139, 124, 248, 0.04));
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  padding-block: 2.5rem;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.role {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  list-style: none;
+  font-size: var(--fs-sm);
+}
+
+.links a,
+.top {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.links a:hover,
+.top:hover {
+  color: var(--text);
+}
+
+.socials {
+  display: flex;
+  gap: 0.25rem;
+  list-style: none;
+}
+
+.socials a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  color: var(--text-muted);
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+
+.socials a:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding-block: 1.25rem 1.5rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+}
+
+.bottom p {
+  display: flex;
+  align-items: center;
+}

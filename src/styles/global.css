@@ -1,0 +1,235 @@
+@import "./tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 12px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+/* Faint grid + top light, fixed behind everything. Cheap: two gradients, no images. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(1000px 600px at 75% -10%, rgba(139, 124, 248, 0.10), transparent 60%),
+    radial-gradient(800px 500px at -10% 20%, rgba(61, 219, 195, 0.05), transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px) 0 0 / 64px 64px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px) 0 0 / 64px 64px;
+  mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.35) 60%, transparent 100%);
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ── Layout helpers ── */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--space-section) 0;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  transform: translateY(-200%);
+  transition: transform 0.2s;
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.gradient-text {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Buttons ── */
+.btn {
+  --btn-bg: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 46px;
+  padding: 0 1.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--btn-bg);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s,
+    transform 0.2s var(--ease-out),
+    box-shadow 0.2s;
+}
+
+.btn:hover {
+  border-color: rgba(255, 255, 255, 0.32);
+  background: var(--surface-hover);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  --btn-bg: var(--text);
+  border-color: transparent;
+  color: #0a0a0f;
+}
+
+.btn-primary:hover {
+  background: #fff;
+  box-shadow: 0 8px 30px -8px rgba(139, 124, 248, 0.55);
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+/* ── Tags ── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* ── Scroll reveal (see hooks/useReveal.ts). Content is visible by default if JS fails. ── */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0s !important;
+  }
+
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[tabindex="-1"]:focus {
+  outline: none;
+}

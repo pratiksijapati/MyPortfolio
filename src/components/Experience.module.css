@@ -1,0 +1,140 @@
+.timeline {
+  position: relative;
+  list-style: none;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: 2rem;
+}
+
+/* timeline rail + node */
+.item::before {
+  content: "";
+  position: absolute;
+  left: calc(12rem + 1rem);
+  top: 0.55rem;
+  bottom: -1.5rem;
+  width: 1px;
+  background: linear-gradient(var(--border-strong), transparent);
+}
+
+.item::after {
+  content: "";
+  position: absolute;
+  left: calc(12rem + 1rem - 4px);
+  top: 0.4rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: right;
+  padding-top: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+}
+
+.period {
+  color: var(--text);
+}
+
+.type {
+  color: var(--text-dim);
+}
+
+.card {
+  margin-left: 1.25rem;
+  padding: clamp(1.25rem, 1rem + 1vw, 2rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
+}
+
+.role {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.org {
+  margin-top: 0.3rem;
+  color: var(--accent-2);
+  font-weight: 500;
+}
+
+.summary {
+  margin-top: 1rem;
+  color: var(--text-muted);
+  max-width: 60ch;
+}
+
+.duties {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.45rem;
+  list-style: none;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+.duties li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.duties li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1.4rem;
+  list-style: none;
+}
+
+@media (max-width: 760px) {
+  .item {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+    padding-left: 1.5rem;
+  }
+
+  .item::before {
+    left: 4px;
+  }
+
+  .item::after {
+    left: 0;
+  }
+
+  .meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    text-align: left;
+  }
+
+  .card {
+    margin-left: 0;
+  }
+}
