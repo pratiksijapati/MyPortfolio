@@ -7,7 +7,7 @@ function ExperienceCard({ item }: { item: ExperienceItem }) {
     <li className={styles.item} data-reveal>
       <div className={styles.meta}>
         <span className={styles.period}>{item.period}</span>
-        {[item.location, item.type].filter(Boolean).map((m) => (
+        {[item.location].filter(Boolean).map((m) => (
           <span key={m} className={styles.type}>
             {m}
           </span>
@@ -38,7 +38,9 @@ export function Experience() {
   return (
     <section id="experience" className="section" aria-labelledby="experience-title">
       <div className="container">
-        <SectionHeading id="experience-title" index="02" eyebrow="Experience" title="Where I've worked" />
+        <SectionHeading id="experience-title" eyebrow="Experience" title="Where I've worked">
+          Two roles at Karkhana: first designing the product, now building it.
+        </SectionHeading>
         <ol className={styles.timeline}>
           {experience.map((item) => (
             <ExperienceCard key={`${item.organization}-${item.role}`} item={item} />

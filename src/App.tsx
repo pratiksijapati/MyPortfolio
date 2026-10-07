@@ -1,10 +1,11 @@
 import { About } from "./components/About";
 import { Contact } from "./components/Contact";
+import { Design } from "./components/design/Design";
 import { Experience } from "./components/Experience";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
 import { Navbar } from "./components/Navbar";
-import { Projects } from "./components/projects/Projects";
+import { Development } from "./components/projects/Development";
 import { Skills } from "./components/Skills";
 import { useReveal } from "./hooks/useReveal";
 
@@ -20,8 +21,9 @@ export default function App() {
         <Hero />
         <About />
         <Experience />
+        <Development />
+        <Design />
         <Skills />
-        <Projects />
         <Contact />
       </main>
       <Footer />

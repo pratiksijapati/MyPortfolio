@@ -1,13 +1,11 @@
-// Work history. Add new roles at the top of the list; the timeline renders them in order.
-// Facts match the master CV (C:\My daily schedule\CV) — keep the two in sync.
+// Work history, newest first. Keep it in line with the master CV.
 
 export interface Experience {
   role: string;
   organization: string;
-  /** Free text so it can be "2026 – Present" or "Mar 2026 – Present". */
+  /** Free text, e.g. "2026 – Present" or "Mar 2026 – Present". */
   period: string;
   location?: string;
-  type?: string;
   summary: string;
   responsibilities: string[];
   tags: string[];
@@ -18,15 +16,27 @@ export const experience: Experience[] = [
     role: "Full-Stack Developer",
     organization: "Karkhana",
     period: "2026 – Present",
-    location: "Nepal",
-    summary:
-      "Developing full-stack features for a multi-module internal operations platform spanning sales, inventory, production, finance and dispatch.",
+    location: "Kathmandu, Nepal",
+    summary: "I build features for Karkhana's internal operations platform: sales, inventory, production, dispatch and finance.",
     responsibilities: [
-      "Design Django models, serializers, migrations and REST API endpoints, and integrate them into React interfaces",
-      "Build inventory, production and dispatch workflows — stock movements, requisitions, recipes/BOM, production jobs, deliveries and returns",
-      "Implement role-based permissions for administrators and operational teams, plus dashboards for each department",
-      "Translate Figma designs into React UI, and extend and debug the production codebase without breaking live workflows",
+      "Design Django models and REST APIs and connect them to React screens",
+      "Build inventory, production and dispatch workflows, including the business rules behind them",
+      "Add role-based permissions and a dashboard for each department",
     ],
-    tags: ["React", "TypeScript", "Django REST Framework", "PostgreSQL", "Role-based access", "Figma"],
+    tags: ["React", "TypeScript", "Django REST Framework", "PostgreSQL"],
+  },
+  {
+    role: "Product & UI/UX Designer",
+    organization: "Karkhana",
+    period: "2025 – 2026",
+    location: "Kathmandu, Nepal",
+    summary: "I designed the screens for the same operations platform, plus education and print work.",
+    responsibilities: [
+      "Designed dashboards, forms, tables and detail views in Figma for Sales, Inventory and Production",
+      "Designed role-specific screens for Sales Admin, BDO, Inventory and Production staff",
+      "Changed designs based on staff feedback and worked with developers during the build",
+      "Designed the Classroom Progress Tracker, plus event, print and social media materials",
+    ],
+    tags: ["Figma", "Product design", "UI design", "Visual design"],
   },
 ];

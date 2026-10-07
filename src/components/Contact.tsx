@@ -173,8 +173,8 @@ export function Contact() {
   return (
     <section id="contact" className={`section ${styles.section}`} aria-labelledby="contact-title">
       <div className="container">
-        <SectionHeading id="contact-title" index="05" eyebrow="Contact" title="Let's build something together">
-          Whether you have a project in mind, a role to fill, or just want to say hi — I'd love to hear from you.
+        <SectionHeading id="contact-title" eyebrow="Contact" title="Get in touch">
+          If you have a role, a project or a question, send me a message here or email me directly.
         </SectionHeading>
 
         <div className={styles.grid}>

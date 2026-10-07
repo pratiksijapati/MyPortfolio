@@ -28,6 +28,28 @@
   fill: rgba(255, 255, 255, 0.2);
 }
 
+.desk {
+  fill: #252836;
+}
+
+.card {
+  fill: rgba(18, 20, 28, 0.96);
+  stroke: rgba(255, 255, 255, 0.16);
+}
+
+.cardName {
+  fill: var(--text);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.cardRole {
+  fill: var(--accent-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
 .stand {
   fill: #20232f;
 }
@@ -49,33 +71,6 @@
   fill: var(--text);
   font-family: var(--font-mono);
   font-size: 12px;
-}
-
-.term {
-  fill: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 12px;
-}
-
-.termOk {
-  fill: var(--accent-2);
-  font-family: var(--font-mono);
-  font-size: 12px;
-}
-
-.ring {
-  stroke: rgba(255, 255, 255, 0.35);
-  stroke-width: 1;
-}
-
-.db {
-  fill: #252836;
-  stroke: rgba(255, 255, 255, 0.12);
-}
-
-.dbTop {
-  fill: var(--accent-2);
-  opacity: 0.85;
 }
 
 .wire {
@@ -102,6 +97,6 @@
 
 @keyframes bob {
   50% {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
   }
 }

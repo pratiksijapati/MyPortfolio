@@ -1,11 +1,27 @@
 {
-  "fetchedAt": "2026-10-06T09:39:27.568Z",
+  "fetchedAt": "2026-10-07T09:18:15.362Z",
   "user": {
     "login": "pratiksijapati",
     "publicRepos": 17,
     "url": "https://github.com/pratiksijapati"
   },
   "repos": [
+    {
+      "name": "MyPortfolio",
+      "description": "Source of my personal portfolio website.",
+      "url": "https://github.com/pratiksijapati/MyPortfolio",
+      "homepage": "https://www.pratiksijapati.com.np/",
+      "language": "TypeScript",
+      "topics": [
+        "css",
+        "html",
+        "portfolio"
+      ],
+      "stars": 0,
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2026-10-07T06:20:18Z"
+    },
     {
       "name": "pratiksijapati",
       "description": "Profile README",
@@ -16,7 +32,7 @@
       "stars": 0,
       "fork": false,
       "archived": false,
-      "updatedAt": "2026-10-06T09:34:58Z"
+      "updatedAt": "2026-10-06T09:56:53Z"
     },
     {
       "name": "salary-prediction-linear-regression",
@@ -34,7 +50,7 @@
       "stars": 0,
       "fork": false,
       "archived": false,
-      "updatedAt": "2026-10-06T09:34:32Z"
+      "updatedAt": "2026-10-06T09:56:45Z"
     },
     {
       "name": "customer-segmentation-kmeans",
@@ -53,7 +69,7 @@
       "stars": 0,
       "fork": false,
       "archived": false,
-      "updatedAt": "2026-10-06T09:34:29Z"
+      "updatedAt": "2026-10-06T09:56:40Z"
     },
     {
       "name": "Inventory-Management-System",
@@ -70,7 +86,7 @@
       "stars": 0,
       "fork": false,
       "archived": false,
-      "updatedAt": "2026-10-06T09:34:26Z"
+      "updatedAt": "2026-10-06T09:56:35Z"
     },
     {
       "name": "ai-career-recommendation-system",
@@ -92,7 +108,7 @@
       "stars": 0,
       "fork": false,
       "archived": false,
-      "updatedAt": "2026-10-06T09:34:23Z"
+      "updatedAt": "2026-10-06T09:56:29Z"
     },
     {
       "name": "discipline-os",
@@ -115,7 +131,7 @@
       "stars": 0,
       "fork": false,
       "archived": false,
-      "updatedAt": "2026-10-06T03:11:45Z"
+      "updatedAt": "2026-10-06T09:56:24Z"
     },
     {
       "name": "Career-Recommendation-System",
@@ -128,22 +144,6 @@
       "fork": false,
       "archived": true,
       "updatedAt": "2026-08-19T14:46:10Z"
-    },
-    {
-      "name": "MyPortfolio",
-      "description": "Source of my personal portfolio website.",
-      "url": "https://github.com/pratiksijapati/MyPortfolio",
-      "homepage": "https://www.pratiksijapati.com.np/",
-      "language": "HTML",
-      "topics": [
-        "css",
-        "html",
-        "portfolio"
-      ],
-      "stars": 0,
-      "fork": false,
-      "archived": false,
-      "updatedAt": "2026-05-25T11:02:09Z"
     },
     {
       "name": "to-do-list",

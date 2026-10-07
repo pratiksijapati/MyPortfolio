@@ -3,23 +3,23 @@ import styles from "./SectionHeading.module.css";
 
 interface Props {
   id: string;
-  index: string;
   eyebrow: string;
   title: ReactNode;
   children?: ReactNode;
+  /** Heading level — h1 on standalone pages, h2 on the home page. */
+  as?: "h1" | "h2";
 }
 
-export function SectionHeading({ id, index, eyebrow, title, children }: Props) {
+export function SectionHeading({ id, eyebrow, title, children, as: Tag = "h2" }: Props) {
   return (
     <header className={styles.heading} data-reveal>
       <p className={styles.eyebrow}>
-        <span className={styles.index}>{index}</span>
         <span className={styles.rule} aria-hidden="true" />
         {eyebrow}
       </p>
-      <h2 id={id} className={styles.title}>
+      <Tag id={id} className={styles.title}>
         {title}
-      </h2>
+      </Tag>
       {children && <p className={styles.lead}>{children}</p>}
     </header>
   );

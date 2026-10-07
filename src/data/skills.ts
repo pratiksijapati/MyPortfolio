@@ -1,5 +1,5 @@
-// Every skill listed here is backed by a project in src/data/projects.ts or the
-// experience in src/data/experience.ts. Keep it that way when adding new ones.
+// Skill names only — no levels or percentages. Every item is backed by a project,
+// the Karkhana work, or the CV. Keep it that way when adding new ones.
 
 export interface Skill {
   name: string;
@@ -7,88 +7,71 @@ export interface Skill {
   icon?: string;
 }
 
-export interface SkillCategory {
+export interface SkillGroup {
   id: string;
   title: string;
-  blurb: string;
   skills: Skill[];
 }
 
-export const skillCategories: SkillCategory[] = [
+export const skillGroups: SkillGroup[] = [
   {
     id: "frontend",
     title: "Frontend",
-    blurb: "Responsive, accessible interfaces and installable web apps.",
     skills: [
       { name: "React", icon: "react" },
       { name: "TypeScript", icon: "typescript" },
       { name: "JavaScript", icon: "javascript" },
       { name: "HTML", icon: "html5" },
       { name: "CSS", icon: "css" },
-      { name: "Tailwind CSS", icon: "tailwindcss" },
       { name: "Vite", icon: "vite" },
-      { name: "TanStack Query", icon: "reactquery" },
-      { name: "PWA" },
+      { name: "Tailwind CSS", icon: "tailwindcss" },
     ],
   },
   {
     id: "backend",
     title: "Backend",
-    blurb: "REST APIs, authentication and server-side logic.",
     skills: [
       { name: "Python", icon: "python" },
       { name: "Django", icon: "django" },
       { name: "Django REST Framework" },
       { name: "FastAPI", icon: "fastapi" },
-      { name: "PHP", icon: "php" },
       { name: "REST APIs" },
-      { name: "JWT Authentication", icon: "jsonwebtokens" },
-      { name: "Web Push" },
+      { name: "JWT auth", icon: "jsonwebtokens" },
+      { name: "PHP", icon: "php" },
     ],
   },
   {
     id: "database",
-    title: "Database",
-    blurb: "Relational data modelling for real applications.",
+    title: "Databases",
     skills: [
       { name: "PostgreSQL", icon: "postgresql" },
       { name: "MySQL", icon: "mysql" },
     ],
   },
   {
-    id: "ai",
-    title: "AI / ML",
-    blurb: "Machine-learning features inside usable products.",
-    skills: [
-      { name: "scikit-learn", icon: "scikitlearn" },
-      { name: "pandas", icon: "pandas" },
-      { name: "NumPy", icon: "numpy" },
-      { name: "Streamlit", icon: "streamlit" },
-      { name: "Random Forest · KNN · K-Means" },
-      { name: "Linear Regression" },
-    ],
-  },
-  {
     id: "design",
-    title: "Design",
-    blurb: "Product thinking from wireframe to final UI.",
+    title: "Product & Design",
     skills: [
-      { name: "UI/UX Design" },
       { name: "Figma", icon: "figma" },
-      { name: "Wireframing" },
-      { name: "Photo & Video Editing" },
+      { name: "UI design" },
+      { name: "Product design" },
+      { name: "Responsive design" },
+      { name: "Developer handoff" },
+      { name: "Canva" },
     ],
   },
   {
     id: "tools",
-    title: "Tools & Deployment",
-    blurb: "Shipping and running what I build.",
+    title: "Tools",
     skills: [
       { name: "Git", icon: "git" },
       { name: "GitHub", icon: "github" },
-      { name: "Vercel", icon: "vercel" },
-      { name: "Render", icon: "render" },
-      { name: "Neon", icon: "neon" },
     ],
   },
 ];
+
+/** Shown as one small line, not a full group. */
+export const exploring = {
+  title: "Exploring",
+  text: "Machine learning with Python and scikit-learn (see Career Navigator).",
+};

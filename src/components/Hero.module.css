@@ -226,12 +226,6 @@
   }
 }
 
-@media (max-width: 1100px) {
-  .statusExtra {
-    display: none;
-  }
-}
-
 @media (max-width: 899px) {
   .hero {
     min-height: auto;
@@ -260,7 +254,8 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .actions > :first-child {
+  .actions > :first-child,
+  .actions > :nth-child(4) {
     grid-column: 1 / -1;
   }
 

@@ -10,11 +10,10 @@ export function About() {
       <div className="container">
         <SectionHeading
           id="about-title"
-          index="01"
           eyebrow="About"
           title={
             <>
-              I build products end to end — <span className="gradient-text">interface, API and data.</span>
+              I work across the whole product, <span className="gradient-text">from design to database.</span>
             </>
           }
         />
@@ -32,6 +31,18 @@ export function About() {
           </div>
 
           <aside className={styles.side}>
+            <img
+              className={styles.portrait}
+              src={`${profile.photo.portrait}-360.webp`}
+              srcSet={`${profile.photo.portrait}-360.webp 360w, ${profile.photo.portrait}-720.webp 720w`}
+              sizes="(max-width: 899px) 60vw, 280px"
+              width={360}
+              height={450}
+              alt={`Portrait of ${profile.photo.alt}`}
+              loading="lazy"
+              decoding="async"
+              data-reveal
+            />
             <ul className={styles.highlights}>
               {about.highlights.map((h, i) => (
                 <li key={h.label} data-reveal style={{ "--i": i } as CSSProperties}>

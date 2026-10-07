@@ -1,28 +1,22 @@
 import type { CSSProperties } from "react";
-import { skillCategories, type SkillCategory as Category } from "../data/skills";
+import { exploring, skillGroups, type SkillGroup as Group } from "../data/skills";
 import { SectionHeading } from "./SectionHeading";
 import { TechIcon } from "./TechIcon";
 import styles from "./Skills.module.css";
 
-function SkillCategory({ category, index }: { category: Category; index: number }) {
+function SkillGroup({ group, index }: { group: Group; index: number }) {
   return (
     <article
-      className={`${styles.card} ${styles[category.id] ?? ""}`}
+      className={`${styles.card} ${styles[group.id] ?? ""}`}
       data-reveal
       style={{ "--i": index % 3 } as CSSProperties}
-      aria-labelledby={`skill-${category.id}`}
+      aria-labelledby={`skill-${group.id}`}
     >
-      <header className={styles.head}>
-        <span className={styles.num} aria-hidden="true">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        <h3 id={`skill-${category.id}`} className={styles.title}>
-          {category.title}
-        </h3>
-        <p className={styles.blurb}>{category.blurb}</p>
-      </header>
+      <h3 id={`skill-${group.id}`} className={styles.title}>
+        {group.title}
+      </h3>
       <ul className={styles.list}>
-        {category.skills.map((s) => (
+        {group.skills.map((s) => (
           <li key={s.name} className={styles.skill}>
             {s.icon ? <TechIcon slug={s.icon} size={15} /> : <span className={styles.bullet} aria-hidden="true" />}
             {s.name}
@@ -37,14 +31,15 @@ export function Skills() {
   return (
     <section id="skills" className="section" aria-labelledby="skills-title">
       <div className="container">
-        <SectionHeading id="skills-title" index="03" eyebrow="Skills" title="A stack that covers the whole product">
-          Every item here is used in a project you can open below — from the interface down to the database.
-        </SectionHeading>
+        <SectionHeading id="skills-title" eyebrow="Skills" title="What I work with" />
         <div className={styles.grid}>
-          {skillCategories.map((c, i) => (
-            <SkillCategory key={c.id} category={c} index={i} />
+          {skillGroups.map((g, i) => (
+            <SkillGroup key={g.id} group={g} index={i} />
           ))}
         </div>
+        <p className={styles.exploring} data-reveal>
+          <span className={styles.exploringLabel}>{exploring.title}</span> {exploring.text}
+        </p>
       </div>
     </section>
   );

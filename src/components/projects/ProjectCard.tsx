@@ -1,23 +1,22 @@
 import type { CSSProperties } from "react";
 import type { Project } from "../../lib/projects";
+import { projectPath } from "../../lib/routes";
 import { Icon } from "../Icon";
-import { ProjectVisual } from "./ProjectVisual";
+import { ProjectImage } from "./ProjectImage";
 import styles from "./ProjectCard.module.css";
 
-const dateFmt = new Intl.DateTimeFormat("en", { month: "short", year: "numeric" });
-
-export function ProjectLinks({ project, onDetails }: { project: Project; onDetails?: () => void }) {
+export function ProjectLinks({ project, showPage = true }: { project: Project; showPage?: boolean }) {
   return (
     <div className={styles.links}>
-      {onDetails && project.details && (
-        <button type="button" className={`${styles.link} ${styles.primaryLink}`} onClick={onDetails}>
-          Details<span className="visually-hidden"> about {project.title}</span>
+      {showPage && project.slug && (
+        <a href={projectPath(project.slug)} className={`${styles.link} ${styles.primaryLink}`}>
+          View project<span className="visually-hidden">: {project.title}</span>
           <Icon name="arrowRight" size={16} />
-        </button>
+        </a>
       )}
       <a href={project.url} target="_blank" rel="noreferrer" className={styles.link}>
-        <Icon name="github" size={16} /> Code
-        <span className="visually-hidden"> for {project.title} on GitHub (opens in a new tab)</span>
+        <Icon name="github" size={16} /> GitHub
+        <span className="visually-hidden"> repository for {project.title} (opens in a new tab)</span>
       </a>
       {project.liveUrl && (
         <a href={project.liveUrl} target="_blank" rel="noreferrer" className={styles.link}>
@@ -29,74 +28,40 @@ export function ProjectLinks({ project, onDetails }: { project: Project; onDetai
   );
 }
 
-interface CardProps {
-  project: Project;
-  index: number;
-  onDetails: (p: Project) => void;
-}
-
-export function ProjectCard({ project, index, onDetails }: CardProps) {
-  return (
-    <li className={styles.card} data-reveal style={{ "--i": index % 3 } as CSSProperties}>
-      <ProjectVisual project={project} />
-      <div className={styles.body}>
-        <div className={styles.metaRow}>
-          <span className={styles.kind}>{project.kind}</span>
-          {project.featured && (
-            <span className={styles.featured}>
-              <Icon name="star" size={12} /> Featured
-            </span>
-          )}
-        </div>
-        <h4 className={styles.title}>{project.title}</h4>
-        <p className={styles.summary}>{project.summary}</p>
-        <ul className={styles.tech} aria-label="Technologies">
-          {project.tech.slice(0, 5).map((t) => (
-            <li key={t} className="tag">
-              {t}
-            </li>
-          ))}
-        </ul>
-        <div className={styles.footer}>
-          <ProjectLinks project={project} onDetails={() => onDetails(project)} />
-          {project.updatedAt && (
-            <span className={styles.updated}>
-              <span className="visually-hidden">Last updated </span>
-              {dateFmt.format(new Date(project.updatedAt))}
-            </span>
-          )}
-        </div>
-      </div>
-    </li>
-  );
-}
-
-export function FeaturedProject({ project, index, onDetails }: CardProps) {
-  const d = project.details;
+/** Featured project: image, name, one sentence, tags, links. */
+export function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const href = project.slug ? projectPath(project.slug) : project.url;
+  const external = !project.slug;
   return (
     <article
-      className={`${styles.featuredCard} ${index < 2 ? styles.featuredLarge : ""}`}
+      className={styles.card}
       data-reveal
       style={{ "--i": index % 2 } as CSSProperties}
-      aria-labelledby={`featured-${project.repo}`}
+      aria-labelledby={`project-${project.repo}`}
     >
-      <ProjectVisual project={project} eager={index === 0} />
+      {project.cover && (
+        <a
+          href={href}
+          className={styles.media}
+          tabIndex={-1}
+          aria-hidden="true"
+          {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+        >
+          <ProjectImage
+            image={project.cover}
+            sizes="(max-width: 760px) calc(100vw - 2rem), (max-width: 1200px) 50vw, 580px"
+            className={styles.img}
+            eager={index < 2}
+          />
+          <span className={styles.hoverLabel}>{external ? "View on GitHub" : "View project"}</span>
+        </a>
+      )}
       <div className={styles.body}>
-        <div className={styles.metaRow}>
-          <span className={styles.kind}>{project.kind}</span>
-          {project.liveUrl && <span className={styles.live}>Live</span>}
-        </div>
-        <h3 id={`featured-${project.repo}`} className={styles.featuredTitle}>
+        <p className={styles.kind}>{project.kind}</p>
+        <h3 id={`project-${project.repo}`} className={styles.title}>
           {project.title}
         </h3>
         <p className={styles.summary}>{project.summary}</p>
-        {index < 2 && d && (
-          <ul className={styles.points}>
-            {d.features.slice(0, 3).map((f) => (
-              <li key={f}>{f}</li>
-            ))}
-          </ul>
-        )}
         <ul className={styles.tech} aria-label="Technologies">
           {project.tech.map((t) => (
             <li key={t} className="tag">
@@ -105,9 +70,36 @@ export function FeaturedProject({ project, index, onDetails }: CardProps) {
           ))}
         </ul>
         <div className={styles.footer}>
-          <ProjectLinks project={project} onDetails={() => onDetails(project)} />
+          <ProjectLinks project={project} />
         </div>
       </div>
     </article>
+  );
+}
+
+/** Compact row for smaller and earlier projects. */
+export function ProjectRow({ project }: { project: Project }) {
+  return (
+    <li className={styles.row}>
+      <div className={styles.rowMain}>
+        <h4 className={styles.rowTitle}>{project.title}</h4>
+        <p className={styles.rowSummary}>
+          <span className={styles.rowKind}>{project.kind}</span> {project.summary}
+        </p>
+      </div>
+      <ul className={styles.rowTech} aria-label="Technologies">
+        {project.tech.slice(0, 3).map((t) => (
+          <li key={t} className="tag">
+            {t}
+          </li>
+        ))}
+      </ul>
+      <a href={project.url} target="_blank" rel="noreferrer" className={styles.rowLink}>
+        <Icon name="github" size={16} />
+        <span>
+          GitHub<span className="visually-hidden"> repository for {project.title} (opens in a new tab)</span>
+        </span>
+      </a>
+    </li>
   );
 }

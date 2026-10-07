@@ -29,6 +29,17 @@
   font-family: var(--font-mono);
 }
 
+.portrait {
+  width: min(100%, 280px);
+  aspect-ratio: 4 / 5;
+  height: auto;
+  margin-bottom: 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  object-fit: cover;
+  background: #1b2638;
+}
+
 .highlights {
   display: grid;
   gap: 1px;

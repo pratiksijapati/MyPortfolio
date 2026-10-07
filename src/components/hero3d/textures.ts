@@ -95,74 +95,166 @@ export function makeTextures(p: Palette) {
   const monitor = drawWindow({
     width: 1024,
     height: 620,
-    title: "projects/api.py",
+    title: "StockTable.tsx",
     fontSize: 24,
     palette: p,
     chrome: false,
     lines: [
-      [["from ", kw], ["fastapi ", txt], ["import ", kw], ["APIRouter", fn]],
+      [["export function ", kw], ["StockTable", fn], ["() {", txt]],
+      [["  const ", kw], ["{ data } ", txt], ["= ", dim], ["useQuery", fn], ["(stockQuery);", txt]],
       [],
-      [["router ", txt], ["= ", dim], ["APIRouter", fn], ["(prefix=", txt], ['"/api/projects"', str], [")", txt]],
-      [],
-      [["@router", kw], [".get", fn], ['("/")', str]],
-      [["async def ", kw], ["list_projects", fn], ["(db: ", txt], ["Session", fn], ["):", txt]],
-      [["    rows ", txt], ["= ", dim], ["db.query(", txt], ["Project", fn], [").all()", txt]],
-      [["    return ", kw], ["[p.to_dict() ", txt], ["for ", kw], ["p ", txt], ["in ", kw], ["rows]", txt]],
-      [],
-      [["# frontend → API → database → back again", dim]],
-    ],
-  });
-
-  const component = drawWindow({
-    width: 560,
-    height: 360,
-    title: "ProjectCard.tsx",
-    fontSize: 19,
-    palette: p,
-    lines: [
-      [["export function ", kw], ["ProjectCard", fn], ["({ p }) {", txt]],
       [["  return ", kw], ["(", txt]],
-      [["    <", dim], ["article ", fn], ["className", kw], ["=", dim], ['"card"', str], [">", dim]],
-      [["      <", dim], ["h3", fn], [">{p.title}</", txt], ["h3", fn], [">", dim]],
-      [["      <", dim], ["Tags ", fn], ["items", kw], ["={p.tech} />", txt]],
-      [["    </", dim], ["article", fn], [">", dim]],
+      [["    <", dim], ["Table", fn], [" rows", kw], ["={data}", txt], [" columns", kw], ["={columns}", txt], [" />", dim]],
       [["  );", txt]],
       [["}", txt]],
+      [],
+      [["// design → frontend → API → database", dim]],
     ],
   });
 
-  const terminal = drawWindow({
+  const frontend = drawWindow({
     width: 520,
-    height: 300,
-    title: "terminal",
+    height: 320,
+    title: "Frontend · React",
     fontSize: 19,
     palette: p,
     lines: [
-      [["$ ", fn], ["python manage.py migrate", txt]],
-      [["  Applying ", dim], ["core.0007", txt], ["... OK", fn]],
-      [["$ ", fn], ["npm run build", txt]],
-      [["  ✓ built in 1.84s", fn]],
-      [["$ ", fn], ["git push origin main", txt]],
-      [["  → deploying…", dim]],
+      [["<", dim], ["Dashboard", fn], [">", dim]],
+      [["  <", dim], ["StatCard ", fn], ["label", kw], ["=", dim], ['"In stock"', str], [" />", dim]],
+      [["  <", dim], ["Filters ", fn], ["onChange", kw], ["={setQuery} />", txt]],
+      [["  <", dim], ["StockTable ", fn], ["/>", dim]],
+      [["</", dim], ["Dashboard", fn], [">", dim]],
     ],
   });
 
-  const json = drawWindow({
-    width: 460,
-    height: 300,
-    title: "GET /api/health",
+  const api = drawWindow({
+    width: 480,
+    height: 320,
+    title: "API · GET /api/stock/",
     fontSize: 19,
     palette: p,
     lines: [
-      [["{", txt]],
-      [['  "status"', kw], [": ", dim], ['"healthy"', str], [",", dim]],
-      [['  "db"', kw], [": ", dim], ['"postgres"', str], [",", dim]],
-      [['  "auth"', kw], [": ", dim], ['"jwt"', str]],
-      [["}", txt]],
+      [["[", txt]],
+      [["  { ", txt], ['"item"', kw], [": ", dim], ['"Kit A"', str], [",", dim]],
+      [["    ", txt], ['"qty"', kw], [": ", dim], ["120", fn], [" },", txt]],
+      [["  { ", txt], ['"item"', kw], [": ", dim], ['"Pouch B"', str], [",", dim]],
+      [["    ", txt], ['"qty"', kw], [": ", dim], ["48", fn], [" }", txt]],
+      [["]", txt]],
     ],
   });
 
-  return { monitor, component, terminal, json };
+  const backend = drawWindow({
+    width: 520,
+    height: 320,
+    title: "Backend · Django",
+    fontSize: 19,
+    palette: p,
+    lines: [
+      [["class ", kw], ["StockViewSet", fn], ["(ModelViewSet):", txt]],
+      [["    serializer_class ", txt], ["= ", dim], ["StockSerializer", fn]],
+      [["    permission_classes ", txt], ["= ", dim], ["[IsInventory]", fn]],
+      [],
+      [["    def ", kw], ["get_queryset", fn], ["(self):", txt]],
+      [["        return ", kw], ["Stock.objects.all()", txt]],
+    ],
+  });
+
+  const database = drawTable(p);
+
+  return { monitor, frontend, api, backend, database };
+}
+
+/** A small database table: header row and a few rows of muted cells. */
+function drawTable(p: Palette) {
+  const width = 480;
+  const height = 320;
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext("2d")!;
+  roundRect(ctx, 1, 1, width - 2, height - 2, 22);
+  ctx.fillStyle = "rgba(16, 18, 26, 0.96)";
+  ctx.fill();
+  ctx.strokeStyle = "rgba(255,255,255,0.14)";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.font = `500 17px ${MONO}`;
+  ctx.textBaseline = "middle";
+  ctx.fillStyle = p.muted;
+  ctx.fillText("Database · PostgreSQL", 24, 30);
+  const cols = [
+    ["id", 24],
+    ["item", 104],
+    ["qty", 284],
+    ["updated", 364],
+  ] as const;
+  const top = 64;
+  const rowH = 42;
+  ctx.fillStyle = "rgba(255,255,255,0.05)";
+  ctx.fillRect(16, top, width - 32, rowH);
+  ctx.font = `500 16px ${MONO}`;
+  ctx.fillStyle = p.accent2;
+  cols.forEach(([c, x]) => ctx.fillText(c, x, top + rowH / 2));
+  const rows = [
+    ["1", "Kit A", "120", "today"],
+    ["2", "Pouch B", "48", "today"],
+    ["3", "Workbook", "300", "1d ago"],
+    ["4", "Sensor set", "16", "2d ago"],
+  ];
+  ctx.font = `400 16px ${MONO}`;
+  rows.forEach((r, i) => {
+    const y = top + rowH * (i + 1);
+    ctx.fillStyle = "rgba(255,255,255,0.06)";
+    ctx.fillRect(16, y, width - 32, 1);
+    ctx.fillStyle = "#d8d9e3";
+    r.forEach((cell, j) => ctx.fillText(cell, cols[j][1], y + rowH / 2));
+  });
+  return makeTexture(canvas);
+}
+
+/** Profile card with my real photo, name and role. Resolves once the photo has loaded. */
+export function makeProfileCard(photoUrl: string, name: string, role: string, p: Palette) {
+  const width = 512;
+  const height = 640;
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext("2d")!;
+  const texture = makeTexture(canvas);
+
+  const drawFrame = (img?: HTMLImageElement) => {
+    ctx.clearRect(0, 0, width, height);
+    roundRect(ctx, 1, 1, width - 2, height - 2, 34);
+    ctx.fillStyle = "rgba(18, 20, 28, 0.97)";
+    ctx.fill();
+    ctx.strokeStyle = "rgba(255,255,255,0.16)";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    const pad = 26;
+    const size = width - pad * 2;
+    ctx.save();
+    roundRect(ctx, pad, pad, size, size, 22);
+    ctx.clip();
+    ctx.fillStyle = "#1b2638";
+    ctx.fillRect(pad, pad, size, size);
+    if (img) ctx.drawImage(img, pad, pad, size, size);
+    ctx.restore();
+    ctx.textBaseline = "alphabetic";
+    ctx.fillStyle = p.text;
+    ctx.font = `600 38px "Geist", system-ui, sans-serif`;
+    ctx.fillText(name, pad + 4, pad + size + 56);
+    ctx.fillStyle = p.accent2;
+    ctx.font = `500 22px ${MONO}`;
+    ctx.fillText(role, pad + 4, pad + size + 92);
+    texture.needsUpdate = true;
+  };
+
+  drawFrame();
+  const img = new Image();
+  img.decoding = "async";
+  img.onload = () => drawFrame(img);
+  img.src = photoUrl;
+  return texture;
 }
 
 /** Pill-shaped label, e.g. "● Backend". Returned with its aspect ratio. */

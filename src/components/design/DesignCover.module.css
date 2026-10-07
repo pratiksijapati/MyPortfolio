@@ -1,0 +1,72 @@
+.cover {
+  --a: rgba(139, 124, 248, 0.45);
+  --b: rgba(61, 219, 195, 0.35);
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: linear-gradient(135deg, #12131b, #0b0c11);
+}
+
+.v1 {
+  --a: rgba(61, 219, 195, 0.4);
+  --b: rgba(139, 124, 248, 0.35);
+}
+
+.v2 {
+  --a: rgba(240, 185, 122, 0.35);
+  --b: rgba(139, 124, 248, 0.3);
+}
+
+.shapes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  fill: var(--a);
+  filter: blur(18px);
+}
+
+.c2 {
+  fill: var(--b);
+  filter: blur(14px);
+}
+
+.r1 {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.14);
+  stroke-width: 1.2;
+}
+
+.line {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+}
+
+.text {
+  position: absolute;
+  left: 1.4rem;
+  bottom: 1.2rem;
+  right: 1.4rem;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.label {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+}
+
+.title {
+  color: var(--text);
+  font-size: clamp(1.1rem, 0.9rem + 1vw, 1.6rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}

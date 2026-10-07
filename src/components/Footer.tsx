@@ -1,10 +1,11 @@
 import { profile } from "../data/profile";
 import { socials } from "../data/socials";
 import { Icon } from "./Icon";
+import { sectionHref } from "../lib/routes";
 import { NAV_ITEMS } from "./Navbar";
 import styles from "./Footer.module.css";
 
-export function Footer() {
+export function Footer({ onHome = true }: { onHome?: boolean }) {
   const year = new Date().getFullYear();
   return (
     <footer className={styles.footer}>
@@ -19,7 +20,7 @@ export function Footer() {
           <ul className={styles.links}>
             {NAV_ITEMS.slice(1).map((i) => (
               <li key={i.id}>
-                <a href={`#${i.id}`}>{i.label}</a>
+                <a href={sectionHref(i.id, onHome)}>{i.label}</a>
               </li>
             ))}
           </ul>
@@ -38,7 +39,7 @@ export function Footer() {
         <p>
           Designed &amp; built by {profile.name} · © {year}
         </p>
-        <a href="#home" className={styles.top}>
+        <a href={onHome ? "#home" : "#main"} className={styles.top}>
           Back to top ↑
         </a>
       </div>

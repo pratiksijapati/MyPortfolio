@@ -1,23 +1,25 @@
-// Curated information about projects, keyed by GitHub repository name.
+// Project information, keyed by GitHub repository name.
 //
 // How it fits together (see src/lib/projects.ts):
-//   - GitHub (live API, or the build-time snapshot) decides WHICH of my repositories exist.
-//   - This file adds what GitHub can't know: category, featured status, a better summary,
-//     a screenshot and the detail write-up. Everything here was verified from each repo's
-//     code/README — don't add claims that the code doesn't support.
-//   - A new public repo with no entry here still appears under "All projects" automatically,
-//     using its GitHub description and language.
+//   - GitHub (live API, or the build-time snapshot) decides which of my repositories exist.
+//   - This file adds what GitHub can't know: whether a project is featured, a plain summary,
+//     real screenshots and the write-up for its own page. Everything here was checked against
+//     each repo's code — don't add claims the code doesn't support.
+//   - A new public repo with no entry here still shows up under "More projects" automatically.
+//
+// This file must stay free of browser-only imports: vite.config.ts reads it to create the
+// static /projects/<slug>/ pages.
 
-export type ProjectCategory = "fullstack" | "frontend" | "backend" | "ai" | "college" | "other";
-
-export const categoryLabels: Record<ProjectCategory, string> = {
-  fullstack: "Full Stack",
-  frontend: "Frontend",
-  backend: "Backend",
-  ai: "AI / ML",
-  college: "College",
-  other: "Other",
-};
+export interface ProjectImage {
+  /** Base path in public/, e.g. "/projects/career-navigator" → "-480.webp", "-960.webp", … */
+  src: string;
+  /** Widths that exist on disk for this image. */
+  widths: number[];
+  /** Pixel ratio of the image (width / height). */
+  ratio: number;
+  alt: string;
+  caption?: string;
+}
 
 export interface ProjectDetails {
   overview: string;
@@ -27,7 +29,8 @@ export interface ProjectDetails {
   backend?: string[];
   database?: string[];
   ml?: string[];
-  architecture?: string;
+  /** How the pieces fit together, in plain words. */
+  implementation?: string;
   note?: string;
 }
 
@@ -36,251 +39,239 @@ export interface CuratedProject {
   /** Repository owner when it isn't my account (e.g. a team project hosted by a teammate). */
   owner?: string;
   title: string;
+  /** One short sentence for cards. */
   summary: string;
-  /** Short label shown on the card, e.g. "Full-stack web app". */
+  /** Small label above the title, e.g. "Full-stack web app". */
   kind: string;
-  categories: ProjectCategory[];
   tech: string[];
+  /** Featured projects lead the Development section; the rest go under "More projects". */
   featured?: boolean;
-  /** Lower comes first. Featured projects are ordered by this; others by last update. */
+  /** Lower comes first among featured projects. */
   order?: number;
   liveUrl?: string;
-  /** Screenshot in public/projects/ — base name; a 480w and 960w .webp exist for each. */
-  image?: string;
+  /** Card image (16:10). */
+  cover?: ProjectImage;
+  /** Extra screenshots for the project page. */
+  gallery?: ProjectImage[];
+  /** Projects with a slug get their own page at /projects/<slug>/. */
+  slug?: string;
   details?: ProjectDetails;
 }
 
-/** Repositories that aren't projects (profile/config repos, this website itself). */
+/** Repositories that aren't projects (profile README, this website itself). */
 export const excludedRepos = new Set(["pratiksijapati", "MyPortfolio"]);
+
+const desktop = (name: string, alt: string, caption?: string): ProjectImage => ({
+  src: `/projects/${name}`,
+  widths: [480, 960, 1440],
+  ratio: 16 / 10,
+  alt,
+  caption,
+});
+const phone = (name: string, alt: string, caption?: string): ProjectImage => ({
+  src: `/projects/${name}`,
+  widths: [390, 780],
+  ratio: 780 / 1688,
+  alt,
+  caption,
+});
+const legacyShot = (name: string, alt: string): ProjectImage => ({
+  src: `/projects/${name}`,
+  widths: [480, 960],
+  ratio: 16 / 10,
+  alt,
+});
 
 export const curatedProjects: CuratedProject[] = [
   {
-    repo: "discipline-os",
-    title: "Discipline OS",
-    kind: "Full-stack web app · PWA",
+    repo: "ai-career-recommendation-system",
+    slug: "career-navigator",
+    title: "Career Navigator",
+    kind: "Full-stack app · ML-based recommendations",
     summary:
-      "An installable personal-discipline app that brings schedule, tasks, habits, workouts and goals into one place and turns them into a daily discipline score.",
-    categories: ["fullstack", "frontend", "backend"],
-    tech: ["React", "TypeScript", "Django", "DRF", "PostgreSQL", "JWT", "PWA"],
+      "Recommends a career path from a student's scores, skills and interests: domain, role, specialization, skill gap and a roadmap.",
+    tech: ["React", "FastAPI", "Python", "scikit-learn", "Tailwind CSS"],
     featured: true,
     order: 1,
-    liveUrl: "https://discipline-os-omega.vercel.app",
+    cover: desktop("career-navigator", "Career Navigator home page: “Find a career path that fits you.”"),
+    gallery: [
+      desktop("career-navigator-wizard", "The assessment form with academic score sliders", "The assessment asks about scores, skills, work style and interests."),
+      desktop("career-navigator-results", "A recommendation result showing the best-matching domain and why", "Results explain why a domain was recommended."),
+      desktop("career-navigator-explore", "Explore Careers page listing career domains", "Students can browse every domain and role without taking the quiz."),
+      desktop("career-navigator-data", "Data Analysis page with students per domain", "A data page shows what the models were trained on."),
+      desktop("career-navigator-models", "Model Performance page for the domain and role models", "A model page reports how each model performs."),
+    ],
     details: {
       overview:
-        "A mobile-first Progressive Web App for personal discipline: a daily schedule built from repeating templates, tasks, habits, workouts, goals and a short night review, combined into a computed 0–100 discipline score with streaks and progress charts.",
+        "A career recommendation and discovery app for students in Nepal. It goes step by step: domain, then role, then specialization, then the skills you're missing and a roadmap to get there.",
       problem:
-        "Plans, habits and goals usually live in separate apps, so it's hard to know what to do right now. Discipline OS answers “what should I do now?” and makes finishing it satisfying.",
+        "Many students only know a handful of careers. The app helps in two ways: you can browse every career without a quiz, or fill in your profile and get recommendations that go down to specific specializations and technologies.",
       features: [
-        "Today view with NOW / NEXT, Today's Focus and Quick Add",
-        "Repeating day plans, tasks, morning routine, habits, workouts and goals with streaks",
-        "Daily discipline score calculated from only the parts you use, plus a lighter “Minimum Day” mode",
-        "Progress charts and a weekly insight, drawn with hand-built SVG components",
-        "Web Push reminders (VAPID) with an honest per-device status",
-        "Wake-up challenge using on-device camera movement detection or math",
-        "Installable PWA that opens offline, with light and dark themes",
+        "Career explorer for browsing every domain, role and specialization",
+        "Recommendation flow: domain → role → specialization → skill gap → roadmap",
+        "Each recommendation comes with plain reasons, comparing your profile with students in that field",
+        "Data analysis and model performance pages",
       ],
-      frontend: ["React 19", "TypeScript", "Vite", "React Router", "TanStack Query", "CSS Modules", "vite-plugin-pwa"],
-      backend: ["Python", "Django 5.2", "Django REST Framework", "SimpleJWT authentication", "pywebpush"],
-      database: ["PostgreSQL (Neon)"],
-      architecture:
-        "A React single-page app on Vercel talks to a Django REST API on Render over HTTPS with JWT auth; the API stores every user's data in PostgreSQL on Neon and never returns another user's records. A scheduled job calls the API every minute to send due reminders, and pushes to main auto-deploy both halves.",
+      frontend: ["React", "Vite", "React Router", "Tailwind CSS", "Recharts", "Axios"],
+      backend: ["Python", "FastAPI", "Pydantic"],
+      ml: ["scikit-learn: Random Forest, Nearest Neighbors, K-Means", "pandas", "NumPy"],
+      database: ["No database: a generated CSV dataset built from a hand-written career taxonomy"],
+      implementation:
+        "The React app calls a FastAPI backend. Random Forest models pick the domain and then the role, a nearest-neighbours search ranks specializations, and the technologies for each specialization come from a lookup table rather than a model. The models train when the API starts and stay in memory.",
+      note: "The training data is generated, not collected from real students. The repository explains this.",
     },
   },
   {
-    repo: "ai-career-recommendation-system",
-    title: "Career Navigator",
-    kind: "Full-stack AI app",
-    summary:
-      "A hierarchical career recommendation and discovery system for Nepali students — Domain → Role → Specialization → Technology — with explainable, ML-backed suggestions.",
-    categories: ["fullstack", "ai", "backend", "frontend"],
-    tech: ["React", "FastAPI", "Python", "scikit-learn", "pandas", "Tailwind CSS", "Recharts"],
+    repo: "discipline-os",
+    slug: "discipline-os",
+    title: "Discipline OS",
+    kind: "Full-stack web app · PWA",
+    summary: "A planner that shows what to do right now, and tracks your schedule, tasks and habits as a daily score.",
+    tech: ["React", "TypeScript", "Django", "Django REST Framework", "PostgreSQL", "JWT"],
     featured: true,
     order: 2,
+    liveUrl: "https://discipline-os-omega.vercel.app",
+    cover: {
+      src: "/projects/discipline-os",
+      widths: [480, 960, 1440],
+      ratio: 16 / 10,
+      alt: "Three Discipline OS screens: My Day timeline, the Today page with the current task, and Habits",
+    },
+    gallery: [
+      phone("discipline-os-today", "Today page with the current task and the next one", "Today shows what to do now and what's next."),
+      phone("discipline-os-myday", "My Day timeline with completed and upcoming blocks", "My Day is the timeline for the day."),
+      phone("discipline-os-habits", "Habits page with weekly check marks", "Habits with a simple week view."),
+      phone("discipline-os-tasks", "Tasks page with today's tasks", "Tasks without a fixed time."),
+    ],
     details: {
       overview:
-        "A career recommendation and discovery system that works through a four-level hierarchy (Domain → Role → Specialization → Technology), using a different, deliberately chosen method at each level.",
+        "A mobile-first web app for keeping a daily routine. It brings your schedule, tasks, habits, workouts and goals into one place and turns them into a daily score from 0 to 100.",
       problem:
-        "Many students only know a handful of careers. The app tackles two problems: career awareness (a browsable Career Explorer, no quiz required) and career matching (a recommendation wizard that goes down to specific specializations and technologies).",
+        "Plans, tasks and habits usually live in different apps, so it's hard to see what you should be doing right now. Discipline OS puts the current task first.",
       features: [
-        "Career Explorer for browsing every domain, role and specialization",
-        "Four-step recommendation wizard: domain, role, specialization and technologies",
-        "Explainable results — real reasons comparing your profile with the average of students in that field",
-        "Skill-gap analysis and an education-stage-aware learning roadmap",
-        "Data-analysis and model-performance pages, including K-Means student archetypes",
+        "Today page with the current task, the next one and a quick add button",
+        "Repeating day plans, tasks, habits, workouts and goals",
+        "A daily score with streaks, and a lighter “Minimum Day” for hard days",
+        "Progress charts and a weekly summary",
+        "Reminders through web push notifications",
+        "Installable on a phone, with light and dark themes",
       ],
-      frontend: ["React 19", "Vite", "React Router", "Tailwind CSS", "Recharts", "axios"],
-      backend: ["Python", "FastAPI", "Uvicorn", "Pydantic"],
-      ml: [
-        "scikit-learn: Random Forest (domain level, plus a per-domain role cascade)",
-        "K-Nearest Neighbours for specialization relevance",
-        "K-Means clustering for student archetypes",
-        "pandas, NumPy",
-      ],
-      database: ["No database — a synthetic CSV dataset generated from a hand-authored career taxonomy"],
-      architecture:
-        "A React SPA calls a FastAPI REST API (explorer, recommendation, skill-gap, roadmap, EDA and model endpoints). Models are trained when the API starts and cached in memory; technologies come from a lookup table, not a model.",
-      note: "The training data is synthetic and documented as such in the repository.",
+      frontend: ["React", "TypeScript", "Vite", "React Router", "TanStack Query"],
+      backend: ["Python", "Django", "Django REST Framework", "JWT authentication"],
+      database: ["PostgreSQL"],
+      implementation:
+        "A React app talks to a Django REST API using JWT authentication. Each user's data is kept separate in PostgreSQL. The frontend is hosted on Vercel and the API on Render, and both deploy automatically when I push to GitHub.",
+      note: "Screenshots show a demo account with sample data.",
     },
   },
   {
     repo: "Inventory-Management-System",
     title: "Inventory Management System",
     kind: "College project · PHP + MySQL",
-    summary:
-      "A web-based inventory system for a retail store — login, adding and selling products, stock levels, sales returns and reports — built with PHP and MySQL.",
-    categories: ["college", "backend", "fullstack"],
+    summary: "An inventory app for a small store: login, adding and selling products, stock, returns and reports.",
     tech: ["PHP", "MySQL", "HTML", "CSS"],
     featured: true,
     order: 3,
-    image: "inventory",
-    details: {
-      overview:
-        "A server-rendered PHP application for managing a retail store's inventory, built as a college project.",
-      problem: "Keeping track of products, sales and returns by hand is slow and error-prone for a small store.",
-      features: [
-        "Login against a users table",
-        "Add products and sell products",
-        "Current stock view",
-        "Sales returns",
-        "Reports",
-      ],
-      frontend: ["HTML", "CSS"],
-      backend: ["PHP (mysqli)"],
-      database: ["MySQL"],
-      architecture: "Classic server-rendered PHP pages that read and write a MySQL database through mysqli.",
-    },
+    cover: legacyShot("inventory", "Inventory Management System home screen with links to products, stock and reports"),
   },
   {
     repo: "HRQuest",
     owner: "uttamshr10",
     title: "HRQuest",
     kind: "Group college project · PHP + MySQL",
-    summary:
-      "An HR management portal with separate user, employee and manager areas — job applications, employee management, payroll and attendance tracking.",
-    categories: ["college", "backend", "fullstack"],
-    tech: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
+    summary: "An HR portal with separate areas for applicants, employees and managers: jobs, attendance and payroll.",
+    tech: ["PHP", "MySQL", "JavaScript", "CSS"],
     featured: true,
     order: 4,
-    image: "hrquest",
-    details: {
-      overview:
-        "A web portal for human-resource management built as a group college project. The repository is hosted on a teammate's GitHub account.",
-      features: [
-        "Public careers page with job details and online applications",
-        "Applicant review — accept or reject candidates",
-        "Separate dashboards for admin, employees and users",
-        "Employee management, attendance tracking and payroll",
-        "Registration, login and password changes",
-      ],
-      frontend: ["HTML", "CSS", "JavaScript"],
-      backend: ["PHP (mysqli)"],
-      database: ["MySQL"],
-      architecture: "Server-rendered PHP pages with role-specific dashboards, backed by a MySQL database.",
-    },
+    cover: legacyShot("hrquest", "HRQuest landing page"),
   },
   {
     repo: "Career-Recommendation-System",
     title: "Career Recommendation System (v1)",
-    kind: "Full-stack AI app · earlier version",
-    summary:
-      "The first version of my career recommender: a React dashboard with EDA and model pages on top of a FastAPI + scikit-learn backend.",
-    categories: ["fullstack", "ai"],
-    tech: ["React", "FastAPI", "Python", "scikit-learn", "Tailwind CSS", "Recharts"],
+    kind: "Earlier version of Career Navigator",
+    summary: "The first version of my career recommender, with a React dashboard and a FastAPI backend.",
+    tech: ["React", "FastAPI", "scikit-learn"],
   },
   {
     repo: "salary-prediction-linear-regression",
     title: "Salary Prediction",
-    kind: "Machine learning",
-    summary:
-      "Supervised learning with Linear Regression to predict salary from years of experience, with a training script, performance metrics and an interactive Streamlit app.",
-    categories: ["ai"],
-    tech: ["Python", "scikit-learn", "pandas", "Streamlit"],
+    kind: "Machine learning exercise",
+    summary: "Linear regression that predicts salary from years of experience, with a small Streamlit app.",
+    tech: ["Python", "scikit-learn", "Streamlit"],
   },
   {
     repo: "customer-segmentation-kmeans",
     title: "Customer Segmentation",
-    kind: "Machine learning",
-    summary:
-      "Unsupervised learning with K-Means to segment customers by annual income and spending score, with synthetic data generation and a Streamlit dashboard.",
-    categories: ["ai"],
-    tech: ["Python", "scikit-learn", "pandas", "Streamlit"],
+    kind: "Machine learning exercise",
+    summary: "K-Means clustering of customers by income and spending score, with a Streamlit dashboard.",
+    tech: ["Python", "scikit-learn", "Streamlit"],
   },
   {
     repo: "Gym-UI",
-    title: "Gym Center Website",
-    kind: "Frontend",
-    summary: "A responsive gym landing page with programs, reasons to join and pricing plans.",
-    categories: ["frontend"],
+    title: "Gym Website",
+    kind: "Early frontend project",
+    summary: "A responsive gym landing page with programs and pricing.",
     tech: ["HTML", "CSS"],
   },
   {
     repo: "Quiz",
     title: "Quiz App",
-    kind: "Frontend · JavaScript",
-    summary: "A simple multiple-choice quiz in the browser with question flow and answer checking in JavaScript.",
-    categories: ["frontend"],
-    tech: ["JavaScript", "HTML", "CSS"],
+    kind: "Early frontend project",
+    summary: "A small multiple-choice quiz in JavaScript.",
+    tech: ["JavaScript"],
   },
   {
     repo: "tic-tac-toe",
     title: "Tic-Tac-Toe",
-    kind: "Frontend · JavaScript",
-    summary: "The classic two-player game in the browser, with game logic written in vanilla JavaScript.",
-    categories: ["frontend"],
-    tech: ["JavaScript", "HTML", "CSS"],
-    image: "tictactoe",
+    kind: "Early frontend project",
+    summary: "The two-player game in the browser.",
+    tech: ["JavaScript"],
   },
   {
     repo: "calculator",
     title: "Calculator",
-    kind: "Frontend · JavaScript",
-    summary: "A simple online calculator for basic arithmetic, built with HTML, CSS and JavaScript.",
-    categories: ["frontend"],
-    tech: ["JavaScript", "HTML", "CSS"],
-    image: "calculator",
+    kind: "Early frontend project",
+    summary: "A basic calculator in HTML, CSS and JavaScript.",
+    tech: ["JavaScript"],
   },
   {
     repo: "to-do-list",
     title: "To-Do List",
-    kind: "Frontend · practice",
-    summary: "A small to-do list interface built with HTML and CSS.",
-    categories: ["frontend"],
+    kind: "Early frontend project",
+    summary: "A small to-do list layout.",
     tech: ["HTML", "CSS"],
   },
   {
     repo: "coffee-shop",
     title: "Coffee Shop Website",
-    kind: "Frontend",
-    summary: "A visually rich coffee shop website with a warm aesthetic, built with HTML and CSS.",
-    categories: ["frontend"],
+    kind: "Early frontend project",
+    summary: "A coffee shop landing page in HTML and CSS.",
     tech: ["HTML", "CSS"],
-    image: "coffee",
   },
   {
     repo: "Amazon-Clone",
     title: "Amazon Clone",
-    kind: "UI clone",
-    summary: "A responsive recreation of Amazon's shopping interface, built to practise complex layouts with HTML and CSS.",
-    categories: ["frontend"],
+    kind: "Layout practice",
+    summary: "A copy of Amazon's layout to practise CSS.",
     tech: ["HTML", "CSS"],
-    image: "amazon",
   },
   {
     repo: "Zomato-Clone",
     title: "Zomato Clone",
-    kind: "UI clone",
-    summary: "A responsive recreation of Zomato's restaurant-discovery interface in HTML and CSS.",
-    categories: ["frontend"],
+    kind: "Layout practice",
+    summary: "A copy of Zomato's layout to practise CSS.",
     tech: ["HTML", "CSS"],
-    image: "zomato",
   },
   {
     repo: "Instagram-Clone",
     title: "Instagram Clone",
-    kind: "UI clone",
-    summary: "A responsive recreation of Instagram's interface, built with HTML and CSS.",
-    categories: ["frontend"],
+    kind: "Layout practice",
+    summary: "A copy of Instagram's layout to practise CSS.",
     tech: ["HTML", "CSS"],
-    image: "instagram",
   },
 ];
+
+/** Projects that get their own page — read by vite.config.ts to create static HTML for each. */
+export const projectPages = curatedProjects
+  .filter((p): p is CuratedProject & { slug: string } => !!p.slug)
+  .map((p) => ({ slug: p.slug, title: p.title, description: p.summary }));

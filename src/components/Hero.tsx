@@ -9,7 +9,7 @@ import styles from "./Hero.module.css";
 
 const Hero3D = lazy(() => import("./hero3d/Hero3D"));
 
-const STACK = ["Frontend", "Backend", "REST APIs", "Databases", "AI / ML"];
+const STACK = ["Frontend", "API", "Backend", "Database", "UI/UX design"];
 
 /** Resolve after the page has loaded and the main thread is idle, so 3D never competes with content. */
 function whenIdle(cb: () => void) {
@@ -43,9 +43,7 @@ export function Hero() {
           {profile.available && (
             <p className={styles.status}>
               <span className={styles.statusDot} aria-hidden="true" />
-              <span>
-                Available for opportunities<span className={styles.statusExtra}> · {profile.availabilityText}</span>
-              </span>
+              <span>{profile.availabilityText}</span>
             </p>
           )}
 
@@ -60,7 +58,7 @@ export function Hero() {
           <p className={styles.tagline}>{profile.tagline}</p>
 
           <div className={styles.actions}>
-            <a href="#projects" className="btn btn-primary">
+            <a href="#development" className="btn btn-primary">
               View My Work <Icon name="arrowRight" />
             </a>
             <a href={githubUrl} target="_blank" rel="noreferrer" className="btn">
@@ -70,6 +68,12 @@ export function Hero() {
             <a href="#contact" className="btn">
               Contact Me
             </a>
+            {profile.resumeUrl && (
+              <a href={profile.resumeUrl} className="btn" download>
+                <Icon name="download" /> Download CV
+                <span className="visually-hidden"> (PDF)</span>
+              </a>
+            )}
           </div>
 
           <ul className={styles.stack} aria-label="What I work across">

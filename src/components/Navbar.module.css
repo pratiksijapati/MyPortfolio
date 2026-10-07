@@ -64,7 +64,7 @@
   display: inline-flex;
   align-items: center;
   height: 34px;
-  padding: 0 0.9rem;
+  padding: 0 0.8rem;
   border-radius: 999px;
   color: var(--text-muted);
   font-size: var(--fs-sm);
@@ -128,7 +128,6 @@
   opacity: 0;
   transform: translateY(8px);
   animation: menuIn 0.4s var(--ease-out) forwards;
-  animation-delay: calc(var(--i) * 40ms);
 }
 
 @keyframes menuIn {
@@ -150,26 +149,17 @@
   color: var(--text-muted);
 }
 
-.mobileLink span {
-  font-size: var(--fs-xs);
-  color: var(--text-dim);
-}
-
 .mobileLink[aria-current] {
   color: var(--text);
 }
 
-.mobileLink[aria-current] span {
-  color: var(--accent-2);
-}
-
-@media (max-width: 1080px) {
+@media (max-width: 1180px) {
   .logoText {
     display: none;
   }
 }
 
-@media (max-width: 899px) {
+@media (max-width: 959px) {
   .links {
     display: none;
   }
